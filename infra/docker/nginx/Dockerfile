@@ -3,7 +3,7 @@ FROM nginx:1.18-alpine
 LABEL maintainer="ucan-lab <yes@u-can.pro>"
 SHELL ["/bin/ash", "-oeux", "pipefail", "-c"]
 
-ENV TZ=UTC
+ENV TZ='Asia/Tokyo'
 
 RUN apk update && \
   apk add --update --no-cache --virtual=.build-dependencies g++
