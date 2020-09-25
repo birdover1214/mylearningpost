@@ -34,6 +34,10 @@ class CreateTalksTable extends Migration
      */
     public function down()
     {
+        Schema::table('talks', function (Blueprint $table) {
+            $table->dropForeign('talks_host_id_foreign');
+            $table->dropForeign('talks_guest_id_foreign');
+        });
         Schema::dropIfExists('talks');
     }
 }
