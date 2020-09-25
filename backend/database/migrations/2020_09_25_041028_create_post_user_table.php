@@ -21,7 +21,7 @@ class CreatePostUserTable extends Migration
 
             //外部キー制約
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('post_id')->references('post_id')->on('posts')->onDelete('cascade');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             //重複防止
             $table->unique(['user_id', 'post_id']);
         });
@@ -34,6 +34,10 @@ class CreatePostUserTable extends Migration
      */
     public function down()
     {
+        Schema::table('post_user', function (Blueprint $table) {
+            $table->dropForeign('post_user_user_id_foreign');
+            $table->dropForeign('post_user_post_id_foreign');
+        });
         Schema::dropIfExists('post_user');
     }
 }
