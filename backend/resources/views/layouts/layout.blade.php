@@ -18,9 +18,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-light navbar-expand-md">
-            <div class="header-content">
-                <a class="navbar-brand" href="{{ url('/') }}">
+        <nav class="navbar">
+            <div class="navbar-content">
+                <a class="navbar-title" href="{{ url('/') }}">
                     ShareMyLearning
                 </a>
                 <ul class="nav-list">
@@ -38,18 +38,22 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item">
-                            <a class="nav-dropdown" href="">
+                        <li class="nav-item nav-dropdown">
+                            <a class="btn-dropdown" href="">
                                 {{ Auth::user()->name }}
                             </a>
-                            <div class="header-dropdown">
-                                <a href="{{ url('/mypage') }}" class="link-mypage">
-                                    <span>マイページ</span>
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <input type="submit" value="ログアウト">
-                                </form>
+                            <div class="navbar-dropdown">
+                                <div class="dropdown-mypage">
+                                    <a href="{{ url('/mypage') }}" class="link-mypage">
+                                        <span>マイページ</span>
+                                    </a>
+                                </div>
+                                <div class="dropdown-logout">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <input type="submit" class="btn-logout" value="ログアウト">
+                                    </form>
+                                </div>
                             </div>
                         </li>
                     @endguest
@@ -57,9 +61,11 @@
             </div>
         </nav>
     </header>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+    <main>
+        @yield('content')
+    </main>
+    <footer>
+        <p>CopyLight ShareMyLearning 2020</p>
+    </footer>
 </body>
 </html>
