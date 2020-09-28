@@ -1,6 +1,6 @@
 $(function() {
-    $('.nav-dropdown').on('click', function(e) {
+    $('.btn-dropdown').on('click', function(e) {
         e.preventDefault();
-        $(this).toggleClass('open');
+        $('.navbar-dropdown').toggleClass('open');
     });
 });
