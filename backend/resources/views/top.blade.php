@@ -7,11 +7,11 @@
 @endsection
 
 @section('content')
-<div class="toppage-wrapper">
-    <div class="toppage-main-wrapper">
-        <div class="toppage-head-wrapper">
-            <h1 class="toppage-head bold">ShareMyLearning</h1>
-            <h3 class="toppage-sub-head">積み重ねの記録を残そう</h3>
+<div class="main-global-wrapper">
+    <div class="main-wrapper">
+        <div class="main-head-wrapper">
+            <h1 class="page-title bold">ShareMyLearning</h1>
+            <h3 class="page-title-sub">積み重ねの記録を残そう</h3>
         </div>
         <div class="toppage-images-wrapper">
             <!-- 完成後の画像を3枚程度並べる -->

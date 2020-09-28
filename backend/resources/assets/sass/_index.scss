@@ -1,8 +1,9 @@
-.toppage-wrapper {
-    margin-top: 55px;
-    background-color: aliceblue;
+.main-global-wrapper {
+    padding-top: 55px;
+    background-image: url("/app-images/back.jpg");
+    background-size: cover;
 
-    .toppage-main-wrapper {
+    .main-wrapper {
         width: 100%;
         text-align: center;
         margin: auto;
@@ -12,10 +13,10 @@
             width: 900px;
         }
 
-        .toppage-head-wrapper {
+        .main-head-wrapper {
             margin:1rem 0 2rem;
 
-            .toppage-head {
+            .page-title {
                 letter-spacing: 3px;
                 font-size: 3rem;
     
@@ -24,7 +25,7 @@
                 }
             }
     
-            .toppage-sub-head {
+            .page-title-sub {
                 margin-top: 1rem;
 
                 @include mq('mobile') {
