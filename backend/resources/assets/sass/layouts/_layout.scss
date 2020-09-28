@@ -12,6 +12,13 @@ a {
     font-weight: 600;
 }
 
+.mobile {
+
+    @include mq('mobile') {
+        width: 100% !important;
+    }
+}
+
 header {
     position: fixed;
     top: 0;
