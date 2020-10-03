@@ -24,9 +24,19 @@ mix
    .js(
       [
          'resources/assets/js/app.js',
+         'resources/assets/js/checkbox.js',
          'resources/assets/js/layouts/layout.js',
+         'resources/assets/js/mypage/mypage.js',
       ],
       'public/js/app.js'
+      )
+      
+   //chart.js
+   .js(
+      [
+         'resources/assets/js/show_chart.js',
+   ],
+      'public/js/chart.js'
    )
 
    .sourceMaps()

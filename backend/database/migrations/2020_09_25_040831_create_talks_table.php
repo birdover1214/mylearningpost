@@ -17,7 +17,7 @@ class CreateTalksTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('host_id');
             $table->unsignedBigInteger('guest_id');
-            $table->string('comment');
+            $table->string('comment', 500);
             $table->string('image')->nullable();
             $table->timestamps();
 

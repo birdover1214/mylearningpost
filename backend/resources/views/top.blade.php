@@ -9,8 +9,9 @@
 @section('content')
 <div class="main-global-wrapper">
     <div class="main-wrapper">
+        @include('layouts.flash_message')
         <div class="main-head-wrapper">
-            <h1 class="page-title bold">ShareMyLearning</h1>
+            <h1 class="toppage-title bold">ShareMyLearning</h1>
             <h3 class="page-title-sub">積み重ねの記録を残そう</h3>
         </div>
         <div class="toppage-images-wrapper">

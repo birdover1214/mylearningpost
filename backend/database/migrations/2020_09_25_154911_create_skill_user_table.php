@@ -14,10 +14,11 @@ class CreateSkillUserTable extends Migration
     public function up()
     {
         Schema::create('skill_user', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('skill_id');
-            $table->integer('total_time');
-            $table->integer('skill_rank');
+            $table->integer('total_time')->default(0);
+            $table->integer('skill_rank')->default(1);
             $table->timestamps();
 
             //外部キー制約
