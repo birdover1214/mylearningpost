@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'user_image'
+        'name', 'email', 'password', 'introduction', 'user_image'
     ];
 
     /**
@@ -53,6 +53,13 @@ class User extends Authenticatable
     }
 
     public function skills() {
-        return $this->belongsToMany('App\Models\Skill');
+        return $this->belongsToMany('App\Models\Skill')->withPivot('total_time', 'skill_rank')->withTimestamps();
+    }
+
+    //total_timeの大きい順に並び替えて取得
+    public function times_largest() {
+        return $this->belongsToMany('App\Models\Skill')
+                    ->withPivot('total_time', 'skill_rank')
+                    ->orderBy('total_time', 'desc');
     }
 }

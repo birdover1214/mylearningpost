@@ -15,6 +15,10 @@
 
 @import "layouts/mixins";
 @import "layouts/layout";
+@import "layouts/flash_message";
+
+@import "mypage/mypage";
 
 @import "index";
 @import "login";
+@import "register";

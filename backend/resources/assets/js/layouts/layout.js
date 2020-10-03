@@ -3,4 +3,4 @@ $(function() {
         e.preventDefault();
         $('.navbar-dropdown').toggleClass('open');
     });
-});
+})
