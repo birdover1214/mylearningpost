@@ -27,6 +27,7 @@ mix
          'resources/assets/js/checkbox.js',
          'resources/assets/js/layouts/layout.js',
          'resources/assets/js/mypage/mypage.js',
+         'resources/assets/js/mypage/edit.js',
       ],
       'public/js/app.js'
       )
@@ -37,6 +38,14 @@ mix
          'resources/assets/js/show_chart.js',
    ],
       'public/js/chart.js'
+   )
+
+   //textCounter.js
+   .js(
+      [
+         'resources/assets/js/text_counter.js',
+   ],
+      'public/js/counter.js'
    )
 
    .sourceMaps()

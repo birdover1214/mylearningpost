@@ -7,6 +7,7 @@
         background-color: rgba(255, 255, 178, 0.8);
         border-radius: 30px;
         letter-spacing: 2px;
+        font-size: 1.5rem;
     }
 }
 
@@ -25,15 +26,15 @@
 
     .label-text {
         text-align: left;
-        width: 85%
+        width: 80%
     }
 
     .input-wrapper {
 
         .input-text {
             font-size: 1rem;
-            width: 600px;
-            height: 40px;
+            width: 80%;
+            height: 2rem;
             border: 1px solid #8c8c8c;
             border-radius: 4px;
         }
@@ -48,4 +49,9 @@
     border: 1px solid rgba(0, 0, 0, 0.5);
     letter-spacing: 1px;
     font-weight: 600;
-    font-size: 18px;}
+    font-size: 18px;
+
+    &:hover {
+        background-color: rgba(52, 144, 220, 0.25);
+    }
+}
