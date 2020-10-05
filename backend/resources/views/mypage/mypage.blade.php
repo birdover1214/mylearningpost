@@ -13,6 +13,7 @@
             <h1 class="mypage-title bold">マイページ</h1>
         </div>
         <div class="mypage-container">
+        @include('layouts.flash_message')
             <div class="main-body mypage-body mobile">
                 <div class="userpage-userprofile-container">
                     <div class="userprofile-box userpage-border-and-bgcolor relative">
@@ -37,7 +38,7 @@
                             </div>
                             <div class="profile-skills-wrapper top-border">
                                 <div class="skills-text">
-                                    学習中のカテゴリー
+                                    学習中のスキル
                                 </div>    
                                 <ul class="profile-skills top-border">
                                     @foreach($user->skills as $skill)
@@ -58,7 +59,7 @@
                 </div>
                 <div class="userpage-totaltime-chart-wrapper">
                     <div class="totaltime-container userpage-border-and-bgcolor">
-                        <p class="totaltime-text bold">カテゴリー別 学習時間TOP3</p>
+                        <p class="totaltime-text bold">スキル別 学習時間TOP3</p>
                         <div class="totaltime-ranking-container">
                             @foreach($user->times_largest as $times)
                                 @if($loop->index > 2)

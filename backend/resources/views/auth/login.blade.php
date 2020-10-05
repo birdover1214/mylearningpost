@@ -17,7 +17,7 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="form-input">
-                        <label for="email" class="label-text">
+                        <label for="email" class="label-text mobile">
                             メールアドレス
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="form-input">
-                        <label for="password" class="label-text">
+                        <label for="password" class="label-text mobile">
                             パスワード
                             @error('password')
                                 <span class="invalid-feedback" role="alert">

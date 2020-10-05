@@ -17,7 +17,7 @@
                 @csrf
 
                 <div class="form-input">
-                    <label for="name" class="label-text">
+                    <label for="name" class="label-text mobile">
                         ニックネーム
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="form-input">
-                    <label for="email" class="label-text">
+                    <label for="email" class="label-text nobile">
                         メールアドレス
                         @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="form-input">
-                    <label for="password" class="label-text">
+                    <label for="password" class="label-text mobile">
                         パスワード
                         @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="form-input">
-                    <label for="password-confirm" class="label-text">パスワード(再入力)</label>
+                    <label for="password-confirm" class="label-text mobile">パスワード(再入力)</label>
 
                     <div class="input-wrapper">
                         <input id="password-confirm" type="password" class="input-text mobile" name="password_confirmation" required autocomplete="new-password">
@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="form-input">
-                    <label for="skills-confirm" class="label-text">
+                    <label for="skills-confirm" class="label-text mobile">
                         学習中または興味のあるものを10個まで選んでください(最低1つは選択してください)
                         @error('skills')
                             <span class="invalid-feedback" role="alert">
