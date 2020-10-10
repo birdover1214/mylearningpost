@@ -18,8 +18,7 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('skill_id');
             $table->integer('time');
-            $table->string('title');
-            $table->string('comment', 200);
+            $table->string('comment', 100);
             $table->timestamps();
 
             //外部キー制約

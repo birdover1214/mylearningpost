@@ -7,12 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Talk extends Model
 {
     protected $fillable = [
-        'host_id', 'guest_id', 'comment', 'image'
+        'post_id', 'user_id', 'comment'
     ];
 
 
     //リレーション作成
     public function user() {
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function post() {
+        return $this->belongsTo('App\Models\Post');
     }
 }

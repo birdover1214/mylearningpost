@@ -24,10 +24,12 @@ mix
    .js(
       [
          'resources/assets/js/app.js',
+         'resources/assets/js/main.js',
          'resources/assets/js/checkbox.js',
          'resources/assets/js/layouts/layout.js',
          'resources/assets/js/mypage/mypage.js',
          'resources/assets/js/mypage/edit.js',
+         'resources/assets/js/posts/post.js',
       ],
       'public/js/app.js'
       )

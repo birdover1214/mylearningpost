@@ -127,6 +127,7 @@ class UserController extends Controller
             //スキルの更新
             $user->skills()->sync($request->skills);
         }catch(\Exception $e) {
+            report($e);
             //エラー処理
             return redirect()->back()->with('flash_message', 'プロフィールの更新に失敗しました');
         }

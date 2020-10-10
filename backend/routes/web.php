@@ -26,4 +26,22 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/mypage/edit', 'UserController@edit');
 
     Route::post('/mypage/update', 'UserController@update');
+
+    Route::get('/', 'PostController@index');
+
+    Route::post('/create', 'PostController@create');
+    
+    Route::post('/delete/{id}', 'PostController@delete');
+
+    Route::post('/getid', 'PostController@getid');
+
+    Route::post('/edit', 'PostController@edit');
+
+    Route::post('/favorite/attach', 'PostController@attach');
+
+    Route::post('/favorite/detach', 'PostController@detach');
+
+    Route::get('/post/{id}', 'TalkController@index');
+
+    Route::post('/talk/create', 'TalkController@create');
 });

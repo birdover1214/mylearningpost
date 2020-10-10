@@ -15,15 +15,14 @@ class CreateTalksTable extends Migration
     {
         Schema::create('talks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('host_id');
-            $table->unsignedBigInteger('guest_id');
-            $table->string('comment', 500);
-            $table->string('image')->nullable();
+            $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('user_id');
+            $table->string('comment', 100);
             $table->timestamps();
 
             //外部キー制約
-            $table->foreign('host_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('guest_id')->references('id')->on('users');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -35,8 +34,8 @@ class CreateTalksTable extends Migration
     public function down()
     {
         Schema::table('talks', function (Blueprint $table) {
-            $table->dropForeign('talks_host_id_foreign');
-            $table->dropForeign('talks_guest_id_foreign');
+            $table->dropForeign('talks_post_id_foreign');
+            $table->dropForeign('talks_user_id_foreign');
         });
         Schema::dropIfExists('talks');
     }

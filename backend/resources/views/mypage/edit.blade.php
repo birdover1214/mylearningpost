@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-input">
                     <label for="name" class="label-text mobile">
-                        ニックネーム
+                        ニックネーム(20文字以内)
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>※{{ $message }}</strong>
@@ -131,7 +131,7 @@
 
                 <div class="form-input">
                     <label for="current_password" class="label-text mobile">
-                        現在使用しているパスワードを入力
+                        プロフィールを変更する場合、現在使用しているパスワードを入力してください
                         @error('current_password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>※{{ $message }}</strong>
@@ -158,7 +158,7 @@
                         <div class="check-edit-content">
                             <h3 class="check-edit-main-message bold">プロフィール更新確認</h3>
                             <p class="check-edit-sub-message">
-                                <strong>スキルの変更を行う場合、チェックを外したスキルは学習時間・ランクともに0になってしまいます。</strong>
+                                <strong>スキルの変更を行う場合、チェックを外したスキルは学習時間・ランクともにリセットされます。</strong>
                                 プロフィールの内容を変更してよろしいですか？
                             </p>
                             <div class="check-edit-button-wrap">
