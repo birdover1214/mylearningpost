@@ -11,10 +11,22 @@
     justify-content: space-between;
 }
 
-.userpage-border-and-bgcolor {
+.border-and-bgcolor {
     border: 2px solid #3f9ae5;
     border-radius: 10px;
     background-color: rgba(228, 245, 255, 0.6);
+}
+
+.rank2 {
+    color: #815a2b;
+}
+
+.rank3 {
+    color: silver;
+}
+
+.rank4 {
+    color: gold;
 }
 
 .mypage-title-wrapper {

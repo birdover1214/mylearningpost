@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
-        'user_id', 'skill_id', 'time', 'title', 'comment'
+        'user_id', 'skill_id', 'time', 'comment'
     ];
 
     //リレーション作成
@@ -21,5 +21,9 @@ class Post extends Model
 
     public function users() {
         return $this->belongsToMany('App\Models\User');
+    }
+
+    public function talks() {
+        return $this->hasMany('App\Models\Talk');
     }
 }

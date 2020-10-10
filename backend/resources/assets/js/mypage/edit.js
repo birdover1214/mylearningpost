@@ -16,6 +16,11 @@ $(function() {
     $('#btn-edit').on('click', function(e) {
         e.preventDefault();
 
+        //is_errorクラスが付与されたエラー項目からis_errorクラスを取り除き、displayの値をnoneに戻す
+        $('.error-field:has(.is_error)').css('display', 'none');
+        $('.is_error').text('');
+        $('.is_error').removeClass('is_error');
+
         //バリデーション処理
         //エラー数格納用変数の初期化
         let errorCount = 0;
@@ -112,8 +117,7 @@ $(function() {
                 $('.name-error').addClass('is_error');
                 $('#name').addClass('is_error');
                 $('.name-error').text('※ ニックネームが入力されていません');
-            }
-            if($.inArray('nameMax', errorType) !== -1) {
+            }else if($.inArray('nameMax', errorType) !== -1) {
                 $('.name-error').addClass('is_error');
                 $('#name').addClass('is_error');
                 $('.name-error').text('※ ニックネームは20文字以内で入力してください');
@@ -131,8 +135,7 @@ $(function() {
                 $('.email-error').addClass('is_error');
                 $('#email').addClass('is_error');
                 $('.email-error').text('※ メールアドレスが入力されていません');
-            }
-            if($.inArray('emailRegex', errorType) !== -1) {
+            }else if($.inArray('emailRegex', errorType) !== -1) {
                 $('.email-error').addClass('is_error');
                 $('#email').addClass('is_error');
                 $('.email-error').text('※ メールアドレスの入力形式が違います');
@@ -143,8 +146,7 @@ $(function() {
                 $('.password-error').addClass('is_error');
                 $('#password').addClass('is_error');
                 $('.password-error').text('※ パスワードは8文字以上で入力してください');
-            }
-            if($.inArray('passwordConfirm', errorType) !== -1) {
+            }else if($.inArray('passwordConfirm', errorType) !== -1) {
                 $('.password-error').addClass('is_error');
                 $('#password').addClass('is_error');
                 $('.password-error').text('※ 確認フィールドと一致しません');
@@ -161,8 +163,7 @@ $(function() {
                 $('.current-password-error').addClass('is_error');
                 $('#current_password').addClass('is_error');
                 $('.current-password-error').text('※ 現在のパスワードを入力してください');
-            }
-            if($.inArray('currentPasswordMin', errorType) !== -1) {
+            }else if($.inArray('currentPasswordMin', errorType) !== -1) {
                 $('.current-password-error').addClass('is_error');
                 $('#current_password').addClass('is_error');
                 $('.current-password-error').text('※ パスワードは8文字以上です');
@@ -204,53 +205,6 @@ $(function() {
             return true;
         }
     }
-
-
-    // //プロフィール変更処理
-    // $('#submit-edit').on('click', function(e) {
-    //     e.preventDefault();
-
-    //     //プロフィール画像データを取得
-    //     const imageData = $('#user_image').prop('files')[0];
-    //     //フォームに入力されているデータをプロフィール画像以外全て取得
-    //     const formData = $('#form-edit').serializeArray();
-
-    //     //送信用のFormData作成
-    //     const sendData = new FormData();
-
-    //     //画像データ挿入
-    //     sendData.append('user_image', imageData);
-    //     //その他のデータ挿入
-    //     for(let i = 0; i < formData.length; i++) {
-    //         sendData.append(formData[i].name, formData[i].value);
-    //     }
-
-    //     //ajax通信処理
-    //     $.ajax({
-    //         headers: {
-    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //         },
-    //         url: '/mypage/update',
-    //         type: 'POST',
-    //         data: sendData,
-    //         processData: false,
-    //         contentType: false,
-    //         timeout: 10000,
-    //     })
-    //     //成功時
-    //     .done(function(data) {
-    //         console.log('success')
-    //         console.log(data)
-    //     })
-    //     //失敗時
-    //     .fail(function(data) {
-    //         console.log('fail')
-    //     });
-
-    //     //確認画面を閉じる
-    //     $('.check-edit-wrapper').removeClass('view');
-    // })
-
 
     //キャンセルボタンを押した際の処理
     $('#cancel-edit').on('click', function(e) {
