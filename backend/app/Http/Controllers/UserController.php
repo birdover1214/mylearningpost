@@ -23,11 +23,6 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        // $a = $user->skills[0];
-        // $b = Post::where('skill_id', $a->id)->where('user_id', $user->id)->sum('time');
-        
-        // dd($a, $b);
-
         //学習時間の多い順にスキルをソートする
         //ユーザーの投稿からスキル名と学習時間を合計したコレクションを取得
         $datas = Post::where('user_id', $user->id)->join('skills', 'posts.skill_id', '=', 'skills.id')->get()

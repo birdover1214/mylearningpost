@@ -24,7 +24,12 @@ $(function() {
 
             //投稿フォームの中身を変更
             $('#time').val('');
-            $('#comment').text('');
+            $('#comment').val('');
+
+            //is_errorクラスが付与されたエラー項目からis_errorクラスを取り除き、displayの値をnoneに戻す
+            $('.error-field:has(.is_error)').css('display', 'none');
+            $('.is_error').text('');
+            $('.is_error').removeClass('is_error');
 
             //新規投稿用のボタンに置き換える
             $('#edit-post').css('display', 'none');
@@ -145,7 +150,7 @@ $(function() {
             //投稿フォームの中身を変更
             $('#skill').val(response.postData.skill_id);
             $('#time').val(response.postData.time);
-            $('#comment').text(response.postData.comment);
+            $('#comment').val(response.postData.comment);
 
             //編集用のボタンに置き換える
             $('#submit-post').css('display', 'none');
@@ -153,7 +158,7 @@ $(function() {
             $('#edit-post').attr('data-edit', postId);
         })
         .fail(function(response) {
-
+            alert('データの取得に失敗しました');
         })
     })
 
@@ -224,7 +229,7 @@ $(function() {
             }else if($.inArray('timeMax', errorType) !== -1) {
                 $('.time-error').addClass('is_error');
                 $('#time').addClass('is_error');
-                $('.time-error').text('※ 1日の総時間を越える値は入力できません');
+                $('.time-error').text('※ 1日分以上の値は入力できません');
             }
 
             if($.inArray('commentRequired', errorType) !== -1) {
@@ -266,13 +271,44 @@ $(function() {
                 data: sendData,
             })
             //成功時
-            .done(function(data) {
+            .done(function(response) {
                 //console.log(data);
                 location.reload();
             })
             //失敗時
-            .fail(function(data) {
-                console.log('fail')
+            .fail(function(response) {
+                //Laravel側のバリデーションエラー
+                if(response.status === 422) {
+                    //エラーメッセージを表示する
+                    if(response.responseJSON.errors.skill) {
+                        $('.select-error').addClass('is_error');
+                        $('#skill').addClass('is_error');
+                        $('.select-error').text(response.responseJSON.errors.skill);        
+                    }
+
+                    if(response.responseJSON.errors.time) {
+                        $('.time-error').addClass('is_error');
+                        $('#time').addClass('is_error');
+                        $('.time-error').text(response.responseJSON.errors.time);
+                    }
+
+                    if(response.responseJSON.errors.comment) {
+                        $('.comment-error').addClass('is_error');
+                        $('#comment').addClass('is_error');
+                        $('.comment-error').text(response.responseJSON.errors.comment);
+                    }
+
+                    //is_errorクラスが付与されたエラー項目にエラーメッセージを表示
+                    $('.error-field:has(.is_error)').css('display', 'block');
+
+                }else {
+                    $('.select-error').addClass('is_error');
+                    $('#skill').addClass('is_error');
+                    $('.select-error').text('※ 投稿処理に失敗しました');
+
+                    //is_errorクラスが付与されたエラー項目にエラーメッセージを表示
+                    $('.error-field:has(.is_error)').css('display', 'block');
+                }
             });
         }
     }

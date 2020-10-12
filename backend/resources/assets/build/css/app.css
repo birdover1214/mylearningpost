@@ -17148,11 +17148,19 @@ header {
   display: block;
 }
 
+.navbar .nav-list .nav-item .navbar-dropdown .dropdown-mypage:hover {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
 .navbar .nav-list .nav-item .navbar-dropdown .dropdown-logout .btn-logout {
   border: none;
   background: none;
   letter-spacing: 1px;
   outline: 0;
+}
+
+.navbar .nav-list .nav-item .navbar-dropdown .dropdown-logout .btn-logout:hover {
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
 footer {
@@ -18159,6 +18167,7 @@ hr {
 .new-post-wrapper .form-post .form-skill #skill {
   width: 7rem;
   border-radius: 4px;
+  background-color: white;
 }
 
 .new-post-wrapper .form-post .form-time {

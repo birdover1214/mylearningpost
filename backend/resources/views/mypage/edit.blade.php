@@ -158,7 +158,6 @@
                         <div class="check-edit-content">
                             <h3 class="check-edit-main-message bold">プロフィール更新確認</h3>
                             <p class="check-edit-sub-message">
-                                <strong>スキルの変更を行う場合、チェックを外したスキルは学習時間・ランクともにリセットされます。</strong>
                                 プロフィールの内容を変更してよろしいですか？
                             </p>
                             <div class="check-edit-button-wrap">

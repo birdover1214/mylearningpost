@@ -131,11 +131,19 @@ header {
                     display: block;
                 }
 
+                .dropdown-mypage:hover {
+                    background-color: rgba(255, 255, 255, 0.75);
+                }
+
                 .dropdown-logout .btn-logout {
                     border: none;
                     background: none;
                     letter-spacing: 1px;
                     outline: 0;
+
+                    &:hover {
+                        background-color: rgba(255, 255, 255, 0.75);
+                    }
                 }
             }
         }
