@@ -42,11 +42,11 @@
                                 </div>    
                                 <ul class="profile-skills top-border">
                                     @foreach($user->skills as $skill)
-                                        @if(App\Models\Post::where('skill_id', $skill->id)->where('user_id', $user->id)->sum('time') < 6000)
+                                        @if($user->posts->whereIn('skill_id', $skill->id)->sum('time') < 6000)
                                         <li class="user-skill">{{ $skill->skill_name }}</li>
-                                        @elseif(App\Models\Post::where('skill_id', $skill->id)->where('user_id', $user->id)->sum('time') < 12000)
+                                        @elseif($user->posts->whereIn('skill_id', $skill->id)->sum('time') < 12000)
                                         <li class="user-skill"><i class="fas fa-crown rank2"></i> {{ $skill->skill_name }}</li>
-                                        @elseif(App\Models\Post::where('skill_id', $skill->id)->where('user_id', $user->id)->sum('time') < 18000)
+                                        @elseif($user->posts->whereIn('skill_id', $skill->id)->sum('time') < 18000)
                                         <li class="user-skill"><i class="fas fa-crown rank3"></i> {{ $skill->skill_name }}</li>
                                         @else
                                         <li class="user-skill"><i class="fas fa-crown rank4"></i> {{ $skill->skill_name }}</li>

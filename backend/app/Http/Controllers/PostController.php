@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Skill;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -29,7 +30,7 @@ class PostController extends Controller
     }
 
     //新規投稿機能
-    public function create(Request $request)
+    public function create(PostRequest $request)
     {
         $user = Auth::user();
 
@@ -69,7 +70,7 @@ class PostController extends Controller
     }
 
     //投稿編集機能
-    public function edit(Request $request)
+    public function edit(PostRequest $request)
     {
         //更新対象のレコードのデータを取得
         $postData = Post::find($request->id);

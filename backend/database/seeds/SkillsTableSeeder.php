@@ -28,6 +28,7 @@ class SkillsTableSeeder extends Seeder
             ['skill_name' => 'HTML'],
             ['skill_name' => 'Java'],
             ['skill_name' => 'JavaScript'],
+            ['skill_name' => 'jQuery'],
             ['skill_name' => 'Kotlin'],
             ['skill_name' => 'Laravel'],
             ['skill_name' => 'PHP'],
@@ -42,6 +43,7 @@ class SkillsTableSeeder extends Seeder
             ['skill_name' => 'Swift'],
             ['skill_name' => 'VisualBasic'],
             ['skill_name' => 'Vue.js'],
+            ['skill_name' => 'WordPress'],
         ]);
     }
 }
