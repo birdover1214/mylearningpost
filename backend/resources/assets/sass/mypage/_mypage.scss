@@ -1,5 +1,5 @@
 .relative {
-    position: relative;
+    position: relative !important;
 }
 
 .top-border {
@@ -51,6 +51,11 @@
             width: auto;
             height: 120px;
             padding: 15px 20px 0;
+
+            &.other {
+                height: 135px;
+                padding-bottom: 15px;
+            }
 
             figure {
                 display: inline-block;
@@ -137,10 +142,12 @@
         font-size: 0.4rem;
         height: 120px;
         display: flex;
+        justify-content: center;
 
         .user-introduction {
             margin: auto 0;
             word-break:break-all;
+            text-align: left;
         }
     }
 
@@ -206,9 +213,12 @@
         align-items: center;
         justify-content: space-between;
         
-        a {
+        .arrow {
             width: 2rem;
             cursor: pointer;
+            border: none;
+            background: none;
+            outline: none;
 
             .fas {
                 font-size: 1.5rem;

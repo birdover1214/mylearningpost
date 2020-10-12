@@ -59,16 +59,25 @@
                             <div class="talks-time-wrap">
                                 {{ $talk->created_at }}
                             </div>
+                            @if($user->id === $talk->user_id)
+                                <div class="talk-delete">
+                                    <form action='{{ url("/talk/delete/{$talk->id}") }}' method="POST">
+                                        @csrf
+                                        <button type="submit" class="talk-delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                    </form>
+                                </div>
+                            @endif
                         </div>
                     @endforeach
-                </div>
-                <div class="pagination-wrapper">
-                    {{ $talks->links() }}
+                    <div class="pagination-wrapper relative">
+                        {{ $talks->links() }}
+                    </div>
                 </div>
             </div>
             <hr>
             <div class="talks-comment-countainer">
                 <form action="" method="POST" class="create-comment-form">
+                    @csrf
                     <div class="comment-body">
                         <span class="error-field">
                             <strong class="comment-error"></strong>

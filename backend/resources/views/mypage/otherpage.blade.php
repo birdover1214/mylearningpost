@@ -10,20 +10,16 @@
 <div class="main-global-wrapper">
     <div class="main-wrapper" data-id="{{ $user->id }}">
         <div class="mypage-title-wrapper mobile">
-            <h1 class="mypage-title bold">マイページ</h1>
+            <h1 class="mypage-title bold">{{ $user->name }}さんのページ</h1>
         </div>
         <div class="mypage-container">
-        @include('layouts.flash_message')
             <div class="main-body mypage-body mobile">
                 <div class="userpage-userprofile-container">
                     <div class="userprofile-box border-and-bgcolor relative">
-                        <div class="userpage-image-wrapper relative">
+                        <div class="userpage-image-wrapper other relative">
                             <figure class="relative">
                                 <img src="/storage/user_images/{{ $user->user_image }}" alt="プロフィール画像" class="user-image">
                             </figure>
-                        </div>
-                        <div class="profile-edit-wrapper">
-                            <a href="/mypage/edit">プロフィールの編集</a>
                         </div>
                         <div class="profile-wrapper mobile top-border">
                             <div class="profile-name">
@@ -31,7 +27,7 @@
                             </div>
                             <div class="profile-introduction top-border">
                                 @if($user->introduction == "")
-                                    <p class="user-introduction">自己紹介文を書いてみよう！</p>
+                                    <p class="user-introduction">自己紹介文未設定</p>
                                 @else
                                     <p class="user-introduction">{{ $user->introduction }}</p>
                                 @endif

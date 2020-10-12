@@ -17115,6 +17115,12 @@ header {
   }
 }
 
+.navbar .nav-list .nav-item .btn-dropdown {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 @media screen and (max-width: 767px) {
   .navbar .nav-list .nav-item .nav-link {
     padding: 0.2rem 0.2rem;
@@ -17217,7 +17223,7 @@ footer p {
 }
 
 .relative {
-  position: relative;
+  position: relative !important;
 }
 
 .top-border {
@@ -17271,6 +17277,11 @@ footer p {
   width: auto;
   height: 120px;
   padding: 15px 20px 0;
+}
+
+.userpage-userprofile-container .userprofile-box .userpage-image-wrapper.other {
+  height: 135px;
+  padding-bottom: 15px;
 }
 
 .userpage-userprofile-container .userprofile-box .userpage-image-wrapper figure {
@@ -17353,11 +17364,13 @@ footer p {
   font-size: 0.4rem;
   height: 120px;
   display: flex;
+  justify-content: center;
 }
 
 .profile-wrapper .profile-introduction .user-introduction {
   margin: auto 0;
   word-break: break-all;
+  text-align: left;
 }
 
 .profile-wrapper .skills-text {
@@ -17423,22 +17436,25 @@ footer p {
   justify-content: space-between;
 }
 
-.chart-container .chart-menu-container a {
+.chart-container .chart-menu-container .arrow {
   width: 2rem;
   cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
 }
 
-.chart-container .chart-menu-container a .fas {
+.chart-container .chart-menu-container .arrow .fas {
   font-size: 1.5rem;
   color: #3490dc;
 }
 
-.chart-container .chart-menu-container a.prev-btn:hover {
+.chart-container .chart-menu-container .arrow.prev-btn:hover {
   transform: translateX(-3px);
   transition-duration: 0.3s;
 }
 
-.chart-container .chart-menu-container a.next-btn:hover {
+.chart-container .chart-menu-container .arrow.next-btn:hover {
   transform: translateX(3px);
   transition-duration: 0.3s;
 }
@@ -17709,6 +17725,9 @@ figure:hover p {
   flex-direction: column;
   font-size: 0.8rem;
   width: 15%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .talks-list .talks-user-image-wrap .talks-user-image {
@@ -17725,13 +17744,27 @@ figure:hover p {
   align-items: center;
   background-color: white;
   border-radius: 10px;
+  font-size: 0.8rem;
 }
 
 .talks-list .talks-time-wrap {
   position: absolute;
   bottom: 0;
-  right: 0.5rem;
+  right: 1.5rem;
   font-size: 0.6rem;
+}
+
+.talks-list .talk-delete {
+  position: absolute;
+  bottom: -0.1rem;
+  right: 0;
+  font-size: 0.7rem;
+}
+
+.talks-list .talk-delete .talk-delete-btn {
+  border: none;
+  background: none;
+  outline: none;
 }
 
 hr {
@@ -18195,7 +18228,7 @@ hr {
 .posts-wrapper {
   top: 3rem;
   width: 680px;
-  padding-bottom: 4rem;
+  padding: 0;
   height: auto;
   min-height: 12rem;
   background-color: #e4f5ff;
@@ -18237,6 +18270,9 @@ hr {
 
 .post-user-image-wrap .post-user-name {
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .post-user-image-wrap .post-icons-wrap {
@@ -18351,9 +18387,9 @@ hr {
 }
 
 .pagination-wrapper {
-  position: absolute;
-  bottom: 0;
-  left: 40%;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 .title-wrapper {
