@@ -48,6 +48,9 @@
         flex-direction: column;
         font-size: 0.8rem;
         width: 15%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
 
         .talks-user-image {
             width: 3rem;
@@ -70,8 +73,21 @@
     .talks-time-wrap {
         position: absolute;
         bottom: 0;
-        right: 0.5rem;
+        right: 1.5rem;
         font-size: 0.6rem;
+    }
+
+    .talk-delete {
+        position: absolute;
+        bottom: -0.1rem;
+        right: 0;
+        font-size: 0.7rem;
+
+        .talk-delete-btn {
+            border: none;
+            background: none;
+            outline: none;
+        }
     }
 }
 

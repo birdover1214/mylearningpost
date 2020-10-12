@@ -13,9 +13,9 @@
         <div class="main-container relative">
             <div class="search-post-wrapper">
                 <div class="search-container">
-                    <form action="" method="GET" id="search-form">
+                    <form action="{{ url('/search') }}" method="GET" id="search-form">
                         @csrf
-                        <input type="search" name="" id="input-search">
+                        <input type="search" name="search" id="input-search" placeholder="検索内容を入力">
                         <input type="submit" id="search-btn" value="検索">
                     </form>
                 </div>
@@ -101,7 +101,10 @@
                                             </button>
                                             <span class="favorites-counter">{{ $post->users()->count() }}</span>
                                         @endif
-                                        <a href='{{ url("/post/{$post->id}") }}' class="icon-comment"><i class="far fa-comment-alt"></i>0</a>
+                                        <a href='{{ url("/post/{$post->id}") }}' class="icon-comment">
+                                            <i class="far fa-comment-alt"></i>
+                                            {{ $post->talks()->count() }}
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="post-contents">
@@ -109,12 +112,12 @@
                                         <label for="skill" class="post-skill-text">
                                             学習したスキル： 
                                             <span>
-                                                @if(App\Models\Skill::find($post->skill_id)->users->find($post->user_id)->pivot->skill_rank === 2)
-                                                <i class="fas fa-crown rank2"></i>
-                                                @elseif(App\Models\Skill::find($post->skill_id)->users->find($post->user_id)->pivot->skill_rank === 3)
-                                                <i class="fas fa-crown rank3"></i>
-                                                @elseif(App\Models\Skill::find($post->skill_id)->users->find($post->user_id)->pivot->skill_rank === 4)
-                                                <i class="fas fa-crown rank4"></i>
+                                                @if(App\Models\Post::where('skill_id', $post->skill_id)->where('user_id', $post->user_id)->sum('time') >= 18000)
+                                                <i class="fas fa-crown rank4"></i> 
+                                                @elseif(App\Models\Post::where('skill_id', $post->skill_id)->where('user_id', $post->user_id)->sum('time') >= 12000)
+                                                <i class="fas fa-crown rank3"></i> 
+                                                @elseif(App\Models\Post::where('skill_id', $post->skill_id)->where('user_id', $post->user_id)->sum('time') >= 6000)
+                                                <i class="fas fa-crown rank2"></i> 
                                                 @endif
                                                 {{ $post->skill->skill_name }} 
                                             </span>
@@ -148,7 +151,7 @@
                         @endforeach
                     </ul>
                 </div>
-                <div class="pagination-wrapper">
+                <div class="pagination-wrapper relative">
                     {{ $posts->links() }}
                 </div>
             </div>

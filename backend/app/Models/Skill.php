@@ -16,6 +16,6 @@ class Skill extends Model
     }
 
     public function users() {
-        return $this->belongsToMany('App\Models\User')->withPivot('total_time', 'skill_rank')->withTimestamps();
+        return $this->belongsToMany('App\Models\User')->withTimestamps();
     }
 }

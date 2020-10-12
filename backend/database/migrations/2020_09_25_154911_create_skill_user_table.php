@@ -17,9 +17,6 @@ class CreateSkillUserTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('skill_id');
-            $table->integer('total_time')->default(0);
-            //total_timeが100時間毎にrankを1づつ上げる。最大4
-            $table->integer('skill_rank')->default(1);
             $table->timestamps();
 
             //外部キー制約

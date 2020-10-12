@@ -32,12 +32,19 @@ class TalkController extends Controller
             $talk->save();
         }catch(\Exception $e) {
             report($e);
-            return response('コメントの保存に失敗しました');
+            return response(compact('e'));
         }
 
         //ページを再描画する為該当するpost_idのtalkデータを取得
-        $talks = Talk::all();
+        $talks = Post::find($request->id)->talks()->latest()->paginate(5);
         
         return response(compact('talks'));
+    }
+
+    public function delete($id)
+    {
+        Talk::destroy($id);
+
+        return redirect()->back()->with('flash_message', 'コメントを削除しました');
     }
 }

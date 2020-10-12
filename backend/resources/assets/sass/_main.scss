@@ -183,7 +183,7 @@
 .posts-wrapper {
     top: 3rem;
     width: 680px;
-    padding-bottom: 4rem;
+    padding: 0;
     height: auto;
     min-height: 12rem;
     background-color: #e4f5ff;
@@ -224,6 +224,9 @@
 
     .post-user-name {
         margin: 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
     }
 
     .post-icons-wrap {
@@ -339,7 +342,7 @@
 }
 
 .pagination-wrapper {
-    position: absolute;
-    bottom: 0;
-    left: 40%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
 }

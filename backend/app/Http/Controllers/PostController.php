@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Skill;
-use App\Services\ChangeRankServices;
 
 class PostController extends Controller
 {
@@ -17,12 +16,14 @@ class PostController extends Controller
         $posts = Post::latest('updated_at')->paginate(5);
         $skills = Skill::all();
         
-        // $s = Skill::find($posts[0]->skill_id)->users;
+        // $keyword = "A";
+        // $pos = Post::whereHas('skill', function ($query) use ($keyword) {
+        //     $query->where('skill_name', 'like', "%$keyword%");
+        // })->latest()->get();
+        // dd($pos);
+
         //memo 投稿を元に投稿された対象のスキルのtotal_timeを取得する
         // $t = Skill::find($posts[0]->skill_id)->users->find($posts[0]->user_id)->pivot->total_time;
-        // $favorite = Post::find(5)->users;
-        // dd($favorite);
-        // dd($posts, $skill, $skillUsers);
 
         return view('main', compact('user', 'posts', 'skills'));
     }
@@ -45,9 +46,6 @@ class PostController extends Controller
 
         }
 
-        //ChangeRankServicesにてtotal_timeを加える処理とskill_rankを上げる処理を行う
-        ChangeRankServices::addTimeAndRankUp($request);
-
         $posts = POST::all();
 
         return response(compact('posts', 'user'));
@@ -56,9 +54,6 @@ class PostController extends Controller
     //投稿削除機能
     public function delete(Request $request)
     {
-        //ChangeRankServicesにてtotal_timeを減らす処理とskill_rankを下げる処理を行う
-        ChangeRankServices::removeTimeAndRankDown($request);
-
         //削除の実行
         Post::destroy($request->id);
 
@@ -79,9 +74,6 @@ class PostController extends Controller
         //更新対象のレコードのデータを取得
         $postData = Post::find($request->id);
 
-        //ChangeRankServicesにてtotal_timeを減らす処理とskill_rankを下げる処理を行う
-        ChangeRankServices::removeTimeAndRankDown($request);
-
         //DB内の対象レコード更新処理
         try {
             $postData->skill_id = $request->skill;
@@ -92,9 +84,6 @@ class PostController extends Controller
         }catch(\Exception $e) {
             report($e);
         }
-
-        //ChangeRankServicesにてtotal_timeを加える処理とskill_rankを上げる処理を行う
-        ChangeRankServices::addTimeAndRankUp($request);
 
         return response(compact('postData'));
     }
@@ -123,6 +112,27 @@ class PostController extends Controller
         $count = $post->users()->count();
 
         return response(compact('count'));
+    }
+
+    //検索機能
+    public function search(Request $request)
+    {
+        $keyword = $request->search;
+        $user = Auth::user();
+        $skills = Skill::all();
+
+        //キーワードを元に検索を行う
+        if($keyword) {
+            $posts = Post::whereHas('skill', function($query) use ($keyword) {
+                $query->where('skill_name', 'LIKE', "%$keyword%");
+            })->orwhereHas('users', function($query) use ($keyword) {
+                $query->where('name', 'LIKE', "%$keyword%");
+            })->orwhere('comment', 'LIKE', "%$keyword%")->latest('updated_at')->paginate(5);
+        }else {
+            $posts = Post::latest('updated_at')->paginate(5);
+        }
+
+        return view('main', compact('user', 'posts', 'skills'));
     }
 
 }
