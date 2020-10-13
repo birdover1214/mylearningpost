@@ -51,36 +51,43 @@ class UserController extends Controller
      */
     public function getData(Request $request)
     {
-        $day = new Carbon('today');
+        //$request->countがセットされていなければ0を設定
+        if($request->count == null) {
+            $request->count = 0;
+            $request->week = '1week';
+        }
 
-        $times = Post::where('user_id', $request->id)->where('created_at', '>=', $day->subDay(6))
-            ->orderBy('created_at', 'asc')->get()->groupBy(function ($row) {
-                return $row->created_at->format('m/d');
-            })->map(function ($day) {
-                return $day->sum('time');
-            });
+        //取得するデータの範囲を変数に代入する
+        $week = '';
+        if($request->week === '1week') {
+            $week = 7;
+        }else {
+            $week = 14;
+        }
 
-        return response(compact('times'));
-    }
+        //グラフ描画の為のデータを挿入する変数の初期化
+        $datas = [];
+        //データ取得開始日を計算する
+        $startDay = new Carbon('today');
+        $startDay->subDay($week * $request->count + $week);
+        //データ取得終了日を計算する
+        $endDay = new Carbon('today');
+        $endDay->subDay($week * $request->count + $week -1);
+        //$datasはkeyを日付、valueを学習時間として渡す為、日付を挿入する為の変数を作成し計算
+        $setDay = new Carbon('today');
+        $setDay->subDay($week * $request->count + $week);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function getData2week(Request $request)
-    {
-        $day = new Carbon('today');
 
-        $times = Post::where('user_id', $request->id)->where('created_at', '>=', $day->subDay(13))
-            ->orderBy('created_at', 'asc')->get()->groupBy(function ($row) {
-                return $row->created_at->format('m/d');
-            })->map(function ($day) {
-                return $day->sum('time');
-            });
-
-        return response(compact('times'));
+        for($i = 0; $i < $week; $i++) {
+            $times = Post::select('time')->where('user_id', $request->id)->where('created_at', '>=', $startDay->addDay(1))
+            ->where('created_at', '<', $endDay->addDay(1))->get();
+            $time = $times->sum('time');
+            $setDay->addDay(1);
+            $day = $setDay->format('m/d');
+            $datas[$day] = $time;
+        }
+        
+        return response(compact('datas'));
     }
 
     /**

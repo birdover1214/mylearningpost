@@ -87,6 +87,12 @@ header {
             text-align: center;
             font-size: large;
 
+            #guest-login-form button {
+                border: none;
+                background: none;
+                outline: none;
+            }
+
             @include mq('mobile') {
                 font-size: medium;
             }
