@@ -30,7 +30,12 @@
                             <a class="nav-link" href="{{ route('login') }}">ログイン</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">ゲストログイン</a>
+                            <form action="{{ url('/guest') }}" method="POST" id="guest-login-form">
+                                @csrf
+                                <input type="hidden" name="email" value="guest@example.com">
+                                <input type="hidden" name="password" value="password">
+                                <button type="submit" class="nav-link">ゲストログイン</button>
+                            </form>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">

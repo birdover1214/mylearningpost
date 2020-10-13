@@ -17098,6 +17098,10 @@ header {
   font-size: large;
 }
 
+.navbar .nav-list .nav-item #guest-login-form input {
+  display: none;
+}
+
 @media screen and (max-width: 767px) {
   .navbar .nav-list .nav-item {
     font-size: medium;

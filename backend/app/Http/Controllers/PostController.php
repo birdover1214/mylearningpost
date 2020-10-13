@@ -13,20 +13,16 @@ class PostController extends Controller
     //メインページ遷移
     public function index()
     {
-        $user = Auth::user();
-        $posts = Post::latest('updated_at')->paginate(5);
-        $skills = Skill::all();
-        
-        // $keyword = "A";
-        // $pos = Post::whereHas('skill', function ($query) use ($keyword) {
-        //     $query->where('skill_name', 'like', "%$keyword%");
-        // })->latest()->get();
-        // dd($pos);
+        //ログインチェック
+        if(Auth::check()) {
+            $user = Auth::user();
+            $posts = Post::latest('updated_at')->paginate(5);
+            $skills = Skill::all();
 
-        //memo 投稿を元に投稿された対象のスキルのtotal_timeを取得する
-        // $t = Skill::find($posts[0]->skill_id)->users->find($posts[0]->user_id)->pivot->total_time;
+            return view('main', compact('user', 'posts', 'skills'));
+        }
 
-        return view('main', compact('user', 'posts', 'skills'));
+        return view('top');
     }
 
     //新規投稿機能
