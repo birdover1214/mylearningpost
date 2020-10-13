@@ -17098,8 +17098,10 @@ header {
   font-size: large;
 }
 
-.navbar .nav-list .nav-item #guest-login-form input {
-  display: none;
+.navbar .nav-list .nav-item #guest-login-form button {
+  border: none;
+  background: none;
+  outline: none;
 }
 
 @media screen and (max-width: 767px) {
@@ -17454,11 +17456,18 @@ footer p {
   border: none;
   background: none;
   outline: none;
+  font-size: 1.5rem;
 }
 
-.chart-container .chart-menu-container .arrow .fas {
-  font-size: 1.5rem;
-  color: #3490dc;
+.chart-container .chart-menu-container .arrow.prev-2week {
+  display: none;
+  position: absolute;
+}
+
+.chart-container .chart-menu-container .arrow.next-2week {
+  display: none;
+  position: absolute;
+  right: 1.5rem;
 }
 
 .chart-container .chart-menu-container .arrow.prev-btn:hover {
@@ -17475,6 +17484,7 @@ footer p {
   width: 45%;
   display: flex;
   justify-content: space-between;
+  margin: 0 auto;
 }
 
 .chart-container .chart-menu-container .change-chart-buttons-container .chart-btn {

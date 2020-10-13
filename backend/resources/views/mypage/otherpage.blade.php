@@ -82,13 +82,15 @@
                         </div>
                     </div>
                     <div class="chart-container border-and-bgcolor">
-                        <div class="chart-menu-container">
-                            <button class="arrow prev-btn prev-1week" data-count="1"><i class="fas fa-caret-left"></i></button>
+                        <div class="chart-menu-container relative">
+                            <button class="arrow prev-btn prev-1week fas" data-count="1">&#xf060</button>
+                            <button class="arrow prev-btn prev-2week fas" data-count="1">&#xf060</button>
                             <div class="change-chart-buttons-container">
                                 <button class="chart-btn" id="btn-1week" disabled>１週間表示</button>
                                 <button class="chart-btn" id="btn-2week">２週間表示</button>
                             </div>
-                            <button class="arrow next-btn next-1week" data-count="1"><i class="fas fa-caret-right"></i></button>
+                            <button class="arrow next-btn next-1week fas" data-count="-1" disabled>&#xf061</button>
+                            <button class="arrow next-btn next-2week fas" data-count="-1" disabled>&#xf061</button>
                         </div>
                         <div class="error-field">
                             <strong>※ データの取得に失敗しました</strong>
