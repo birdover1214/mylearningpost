@@ -11,13 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('top');
-});
+Route::get('/', 'PostController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//ゲストログイン
+Route::post('/guest', 'Auth\LoginController@guest');
+
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function() {
 
@@ -26,8 +27,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/mypage/edit', 'UserController@edit');
 
     Route::post('/mypage/update', 'UserController@update');
-
-    Route::get('/', 'PostController@index');
 
     Route::post('/create', 'PostController@create');
     
