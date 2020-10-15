@@ -187,7 +187,7 @@
     padding: 0;
     height: auto;
     min-height: 12rem;
-    background-color: #e4f5ff;
+    background-color: #f8f9fa;
     border: 2px solid #3f9ae5;
     border-radius: 10px;
     transition: top 0.5s;
@@ -286,6 +286,10 @@
         label {
             width: 50%;
             margin: 0;
+
+            .post-time {
+                font-size: 1.1rem;
+            }
         }
     }
 

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Skill;
 use App\Http\Requests\PostRequest;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -119,10 +120,10 @@ class PostController extends Controller
         $skills = Skill::all();
 
         //キーワードを元に検索を行う
-        if($keyword) {
+        if($keyword != null) {
             $posts = Post::whereHas('skill', function($query) use ($keyword) {
                 $query->where('skill_name', 'LIKE', "%$keyword%");
-            })->orwhereHas('users', function($query) use ($keyword) {
+            })->orwhereHas('user', function($query) use ($keyword) {
                 $query->where('name', 'LIKE', "%$keyword%");
             })->orwhere('comment', 'LIKE', "%$keyword%")->latest('updated_at')->paginate(5);
         }else {

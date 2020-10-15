@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="main-global-wrapper">
+<div class="main-global-wrapper top-wrapper">
     <div class="main-wrapper">
         @include('layouts.flash_message')
         <div class="main-head-wrapper">
@@ -18,13 +18,13 @@
             <!-- 完成後の画像を3枚程度並べる -->
             <div class="image-content">
                 <div class="image-container">
-                    <img class="main-img" src="{{ asset('/app-images/main1.jpg') }}" alt="">
-                    <img class="main-img" src="{{ asset('/app-images/image2.png') }}" alt="">
-                    <img class="main-img" src="{{ asset('/app-images/graph3.png') }}" alt="">
+                    <img class="main-img" src="{{ asset('/app-images/mainphoto3.png') }}" alt="">
+                    <img class="main-img" src="{{ asset('/app-images/mainphoto2.png') }}" alt="">
+                    <img class="main-img" src="{{ asset('/app-images/mainphoto1.png') }}" alt="">
                 </div>
                 <div class="image-text-container">
                     <p class="image-introduction bold">毎日の学習を投稿しよう</p>
-                    <p class="image-introduction bold">わからない所はチャットで質問できる</p>
+                    <p class="image-introduction bold">わからない所を質問しよう</p>
                     <p class="image-introduction bold">学習時間に応じてランクアップ！</p>
                 </div>
             </div>

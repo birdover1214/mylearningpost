@@ -153,7 +153,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="check-edit-wrapper">
+                <div class="check-edit-wrapper check">
                     <div class="check-edit-container">
                         <div class="check-edit-content">
                             <h3 class="check-edit-main-message bold">プロフィール更新確認</h3>
@@ -163,6 +163,31 @@
                             <div class="check-edit-button-wrap">
                                 <input type="submit" id="submit-edit" class="check-btn change-btn" value="変更する">
                                 <input type="button" id="cancel-edit" class="check-btn" value="キャンセル">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form method="POST" action="{{ route('user.delete') }}" id="form-delete">
+                @csrf
+                <div class="form-button">
+                    <div class="button-container">
+                        <button type="submit" id="btn-user-delete" class="btn-submit btn-user-delete mobile">
+                            登録の解除
+                        </button>
+                    </div>
+                </div>
+                <div class="check-delete-wrapper check">
+                    <div class="check-edit-container">
+                        <div class="check-edit-content">
+                            <h3 class="check-edit-main-message bold">ユーザー登録の解除確認</h3>
+                            <p class="check-edit-sub-message">
+                                <strong>登録の解除</strong>
+                                を行います。よろしいですか？
+                            </p>
+                            <div class="check-edit-button-wrap">
+                                <input type="submit" id="submit-delete" class="check-btn user-delete-btn" value="解除する">
+                                <input type="button" id="cancel-delete" class="check-btn" value="キャンセル">
                             </div>
                         </div>
                     </div>

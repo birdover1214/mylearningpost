@@ -13,7 +13,7 @@ class TalkController extends Controller
     {
         $user = Auth::user();
         $post = Post::find($id);
-        $talks = Post::find($id)->talks()->latest()->paginate(5);
+        $talks = Post::find($id)->talks()->paginate(10);
 
         return view('posts.post', compact('user', 'post', 'talks'));
     }

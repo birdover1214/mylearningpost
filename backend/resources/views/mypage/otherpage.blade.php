@@ -71,7 +71,17 @@
                                     @else
                                     <p class="totaltime-top3 bold"><i class="fas fa-crown rank4"></i> {{ $skill }}</p>
                                     @endif
-                                    <p class="totaltimes">{{ $times[$loop->index] }}</p>
+                                    <p class="totaltimes">
+                                        @if(intdiv($times[$loop->index], 60) > 0)
+                                            {{ intdiv($times[$loop->index], 60) }}時間
+                                        @endif
+                                        @if($times[$loop->index] % 60 != 0)
+                                            {{ $times[$loop->index] % 60 }}分
+                                        @endif
+                                        @if(intdiv($times[$loop->index], 60) === 0 && $times[$loop->index] % 60 != 0)
+                                            0 分
+                                        @endif
+                                    </p>
                                 </div>
                             @endforeach
                             @if(!count($skills))

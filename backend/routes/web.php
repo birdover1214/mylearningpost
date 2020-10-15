@@ -22,11 +22,13 @@ Route::post('/guest', 'Auth\LoginController@guest');
 
 Route::group(['middleware' => 'auth'], function() {
 
-    Route::get('/mypage', 'UserController@index');
+    Route::get('/mypage', 'UserController@index')->name('mypage');
 
-    Route::get('/mypage/edit', 'UserController@edit');
+    Route::get('/mypage/edit', 'UserController@edit')->name('mypage.edit');
 
     Route::post('/mypage/update', 'UserController@update');
+
+    Route::post('/mypage/delete', 'UserController@delete')->name('user.delete');
 
     Route::post('/create', 'PostController@create');
     
@@ -40,7 +42,7 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::post('/favorite/detach', 'PostController@detach');
 
-    Route::get('/post/{id}', 'TalkController@index');
+    Route::get('/post/{id}', 'TalkController@index')->name('talk');
 
     Route::post('/talk/create', 'TalkController@create');
 
@@ -52,5 +54,5 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::post('/mypage/getdata2week', 'UserController@getData2week');
 
-    Route::get('/userpage/{id}', 'UserController@other');
+    Route::get('/userpage/{id}', 'UserController@other')->name('userpage');
 });
