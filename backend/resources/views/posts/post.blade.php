@@ -21,12 +21,12 @@
                         <label for="skill" class="post-skill-text">
                             学習したスキル： 
                             <span>
-                                @if(App\Models\Skill::find($post->skill_id)->users->find($post->user_id)->pivot->skill_rank === 2)
-                                <i class="fas fa-crown rank2"></i>
-                                @elseif(App\Models\Skill::find($post->skill_id)->users->find($post->user_id)->pivot->skill_rank === 3)
-                                <i class="fas fa-crown rank3"></i>
-                                @elseif(App\Models\Skill::find($post->skill_id)->users->find($post->user_id)->pivot->skill_rank === 4)
-                                <i class="fas fa-crown rank4"></i>
+                                @if(App\Models\Post::where('skill_id', $post->skill_id)->where('user_id', $post->user_id)->sum('time') >= 18000)
+                                <i class="fas fa-crown rank4"></i> 
+                                @elseif(App\Models\Post::where('skill_id', $post->skill_id)->where('user_id', $post->user_id)->sum('time') >= 12000)
+                                <i class="fas fa-crown rank3"></i> 
+                                @elseif(App\Models\Post::where('skill_id', $post->skill_id)->where('user_id', $post->user_id)->sum('time') >= 6000)
+                                <i class="fas fa-crown rank2"></i> 
                                 @endif
                                 {{ $post->skill->skill_name }} 
                             </span>

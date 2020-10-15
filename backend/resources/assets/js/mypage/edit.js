@@ -206,11 +206,27 @@ $(function() {
         }
     }
 
-    //キャンセルボタンを押した際の処理
+    //編集キャンセルボタンを押した際の処理
     $('#cancel-edit').on('click', function(e) {
         e.preventDefault();
 
         //確認画面を閉じる
         $('.check-edit-wrapper').removeClass('view');
+    })
+
+    //登録の解除ボタンを押した際の処理
+    $('#btn-user-delete').on('click', function(e) {
+        e.preventDefault();
+
+        //確認画面を表示
+        $('.check-delete-wrapper').addClass('view');
+    })
+
+    //登録解除キャンセルボタンを押した際の処理
+    $('#cancel-delete').on('click', function(e) {
+        e.preventDefault();
+
+        //確認画面を閉じる
+        $('.check-delete-wrapper').removeClass('view');
     })
 })

@@ -186,9 +186,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete()
     {
-        //
+        $user = Auth::user();
+
+        User::findOrfail($user->id)->delete();
+
+        //ユーザープロフィール画像の削除
+        if($user->user_image != 'no_picture.png') {
+            Storage::delete('public/user_images/'.$user->user_image);
+        }
+
+        return redirect(route('home'))->with('flash_message', '登録を解除しました');
     }
 
     public function other($id)

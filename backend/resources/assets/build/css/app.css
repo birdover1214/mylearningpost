@@ -17028,7 +17028,7 @@ header {
 }
 
 .navbar {
-  background-color: lightblue;
+  background-color: #e9ecef;
   box-shadow: 0 1px 6px 0 black;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -17605,11 +17605,11 @@ figure:hover p {
   font-size: 0.8rem;
 }
 
-.check-edit-wrapper {
+.check {
   display: none;
 }
 
-.check-edit-wrapper.view {
+.check.view {
   display: block;
   position: fixed;
   top: 0;
@@ -17620,7 +17620,7 @@ figure:hover p {
   z-index: 11;
 }
 
-.check-edit-wrapper .check-edit-container {
+.check .check-edit-container {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -17635,49 +17635,49 @@ figure:hover p {
 }
 
 @media screen and (max-width: 767px) {
-  .check-edit-wrapper .check-edit-container {
+  .check .check-edit-container {
     width: 80%;
     padding: 1rem;
   }
 }
 
-.check-edit-wrapper .check-edit-content {
+.check .check-edit-content {
   text-align: center;
 }
 
-.check-edit-wrapper .check-edit-content .check-edit-main-message {
+.check .check-edit-content .check-edit-main-message {
   line-height: 2rem;
   font-size: 1rem;
 }
 
-.check-edit-wrapper .check-edit-content .check-edit-sub-message {
+.check .check-edit-content .check-edit-sub-message {
   font-size: 0.8rem;
   margin: 0.5rem 0;
 }
 
 @media screen and (max-width: 767px) {
-  .check-edit-wrapper .check-edit-content .check-edit-sub-message {
+  .check .check-edit-content .check-edit-sub-message {
     font-size: 0.6rem;
   }
 }
 
-.check-edit-wrapper .check-edit-content .check-edit-sub-message strong {
+.check .check-edit-content .check-edit-sub-message strong {
   color: #fd3232;
 }
 
-.check-edit-wrapper .check-edit-button-wrap {
+.check .check-edit-button-wrap {
   margin: 1.5rem 6rem 0;
   display: flex;
   flex-direction: column;
 }
 
 @media screen and (max-width: 767px) {
-  .check-edit-wrapper .check-edit-button-wrap {
+  .check .check-edit-button-wrap {
     margin: 1rem 3rem 0;
   }
 }
 
-.check-edit-wrapper .check-edit-button-wrap .check-btn {
+.check .check-edit-button-wrap .check-btn {
   margin-bottom: 1rem;
   line-height: 2rem;
   border-radius: 5px;
@@ -17688,12 +17688,25 @@ figure:hover p {
   border: 1px solid black;
 }
 
-.check-edit-wrapper .check-edit-button-wrap .check-btn.change-btn {
+.check .check-edit-button-wrap .check-btn.change-btn {
   background-color: rgba(52, 144, 220, 0.5);
 }
 
-.check-edit-wrapper .check-edit-button-wrap .check-btn.change-btn:hover {
+.check .check-edit-button-wrap .check-btn.change-btn:hover {
   background-color: rgba(52, 144, 220, 0.25);
+}
+
+.check .check-edit-button-wrap .check-btn.user-delete-btn {
+  background-color: rgba(253, 50, 50, 0.5);
+}
+
+.check .check-edit-button-wrap .check-btn.user-delete-btn:hover {
+  background-color: rgba(253, 50, 50, 0.25);
+}
+
+.btn-user-delete {
+  margin-top: 1rem;
+  background-color: rgba(253, 50, 50, 0.5) !important;
 }
 
 .post-container {
@@ -17811,7 +17824,7 @@ hr {
 
 .main-global-wrapper {
   padding-top: 55px;
-  background-image: url("/app-images/back.jpg");
+  background-image: url("/app-images/backgroundimage.jpeg");
 }
 
 .main-global-wrapper .main-wrapper {
@@ -18254,7 +18267,7 @@ hr {
   padding: 0;
   height: auto;
   min-height: 12rem;
-  background-color: #e4f5ff;
+  background-color: #f8f9fa;
   border: 2px solid #3f9ae5;
   border-radius: 10px;
   transition: top 0.5s;
@@ -18355,6 +18368,10 @@ hr {
 .post-contents .post-skill-time-wrap label {
   width: 50%;
   margin: 0;
+}
+
+.post-contents .post-skill-time-wrap label .post-time {
+  font-size: 1.1rem;
 }
 
 .post-contents .post-config-wrap {

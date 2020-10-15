@@ -122,7 +122,7 @@
                                                 {{ $post->skill->skill_name }} 
                                             </span>
                                         </label>
-                                        <label for="time" class="post-time-text">学習時間： {{ $post->time }} 分</label>
+                                        <label for="time" class="post-time-text">学習時間： <span class="post-time">{{ $post->time }}</span> 分</label>
                                     </div>
                                     @if($post->user_id === $user->id)
                                     <div class="post-config-wrap">
@@ -152,7 +152,7 @@
                     </ul>
                 </div>
                 <div class="pagination-wrapper relative">
-                    {{ $posts->links() }}
+                    {{ $posts->appends(request()->input())->links() }}
                 </div>
             </div>
         </div>

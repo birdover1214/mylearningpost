@@ -1,12 +1,12 @@
 import "Chart.js";
 
 //描画するグラフの設定
-window.make_chart = function make_chart(labels, data)
+function make_chart(labels, data)
 {
 
     const canvas = $("#myChart");
 
-    var myChart = new Chart(canvas, {
+    window.myChart = new Chart(canvas, {
         type: 'bar',
         data: {
             labels: labels,
@@ -171,6 +171,8 @@ $(function() {
             type: 'POST',
         })
         .done(function(response) {
+            //現在表示しているグラフを破棄
+            myChart.destroy();
             //グラフの描画処理
             const labels = Object.keys(response.datas);
             const data = Object.values(response.datas);
