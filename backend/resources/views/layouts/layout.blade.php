@@ -21,7 +21,7 @@
         <nav class="navbar">
             <div class="navbar-content">
                 <a class="navbar-title" href="{{ url('/') }}">
-                    ShareMyLearning
+                    MyLearningPost
                 </a>
                 <ul class="nav-list">
                     <!-- ログイン判定 -->
@@ -70,7 +70,7 @@
         @yield('content')
     </main>
     <footer>
-        <p>CopyLight ShareMyLearning 2020</p>
+        <p>CopyLight MyLearningPost 2020</p>
     </footer>
 </body>
 </html>

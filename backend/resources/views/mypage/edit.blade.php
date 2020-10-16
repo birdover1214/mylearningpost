@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'ShareMyLearning プロフィール編集')
+@section('title', 'MyLearningPost プロフィール編集')
 
 @section('scripts')
 <script src="{{ asset('js/counter.js') }}" defer></script>

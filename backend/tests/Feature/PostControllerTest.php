@@ -29,8 +29,8 @@ class PostControllerTest extends TestCase
 
         $response->assertStatus(200)
             ->assertViewIs('top')
-            ->assertTitle('ShareMyLearning')
-            ->assertSee('積み重ねの記録を残そう');
+            ->assertTitle('MyLearningPost')
+            ->assertSee('積み重ねの投稿をしよう');
 
         //認証済みの場合
         $user = factory(User::class)->create();
@@ -43,7 +43,7 @@ class PostControllerTest extends TestCase
             ->assertViewIs('main')
             ->assertCookie('XSRF-TOKEN')
             ->assertCookie('laravel_session')
-            ->assertTitle('ShareMyLearning')
+            ->assertTitle('MyLearningPost')
             ->assertSee('検索')
             ->assertSee('投稿する')
             ->assertSee($user->name);
