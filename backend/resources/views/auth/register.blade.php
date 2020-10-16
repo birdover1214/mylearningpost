@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'ShareMyLearning新規登録')
+@section('title', 'MyLearningPost 新規登録')
 
 @section('scripts')
 

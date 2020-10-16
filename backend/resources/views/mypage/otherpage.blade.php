@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'ShareMyLearning マイページ')
+@section('title', 'MyLearningPost $user->nameさんのページ')
 
 @section('scripts')
 <script src="{{ asset('js/chart.js') }}" defer></script>
