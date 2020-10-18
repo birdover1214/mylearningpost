@@ -13,7 +13,7 @@
         <div class="post-container relative">
             <div class="post-detail-container">
                 <div class="post-user-image-wrap center">
-                    <img src="/storage/user_images/{{ $post->user->user_image }}" alt="{{ $post->user->name }}" class="post-user-image">
+                    <img src="@if($post->user->user_image)/storage/user_images/{{ $post->user->user_image }}@else{{ asset('/app-images/no_picture.png') }}@endif" alt="{{ $post->user->name }}" class="post-user-image">
                     <p class="post-user-name">{{ $post->user->name }}</p>
                 </div>
                 <div class="post-contents">
@@ -48,8 +48,8 @@
                     @foreach($talks as $talk)
                         <div class="talks-list relative">
                             <div class="talks-user-image-wrap">
-                                <a href="@if($user->id === $post->user_id) /mypage @else /userpage/{{ $talk->user_id }} @endif">
-                                    <img src="/storage/user_images/{{ $talk->user->user_image }}" alt="{{ $talk->user->name }}" class="talks-user-image">
+                                <a href="@if($user->id === $talk->user_id) /mypage @else /userpage/{{ $talk->user_id }} @endif">
+                                    <img src="@if($talk->user->user_image)/storage/user_images/{{ $talk->user->user_image }}@else{{ asset('/app-images/no_picture.png') }}@endif" alt="{{ $talk->user->name }}" class="talks-user-image">
                                 </a>
                                 {{ $talk->user->name }}
                             </div>

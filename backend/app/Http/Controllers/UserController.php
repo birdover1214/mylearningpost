@@ -146,10 +146,8 @@ class UserController extends Controller
 
             //更新したプロフィール画像をpublic/storage/user_imagesへ移動
             $request->user_image->storeAs('public/user_images', $newImage);
-            //更新前の画像がデフォルト画像でなければ削除する
-            if($user->user_image != 'no_picture.png') {
-                Storage::delete('public/user_images/'.$user->user_image);
-            }
+            //画像の削除
+            Storage::delete('public/user_images/'.$user->user_image);
         }
 
         //更新処理
@@ -193,9 +191,7 @@ class UserController extends Controller
         User::findOrfail($user->id)->delete();
 
         //ユーザープロフィール画像の削除
-        if($user->user_image != 'no_picture.png') {
-            Storage::delete('public/user_images/'.$user->user_image);
-        }
+        Storage::delete('public/user_images/'.$user->user_image);
 
         return redirect(route('home'))->with('flash_message', '登録を解除しました');
     }

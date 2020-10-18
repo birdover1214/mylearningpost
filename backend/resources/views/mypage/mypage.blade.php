@@ -3,6 +3,7 @@
 @section('title', 'MyLearningPost マイページ')
 
 @section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <script src="{{ asset('js/chart.js') }}" defer></script>
 @endsection
 
@@ -19,7 +20,7 @@
                     <div class="userprofile-box border-and-bgcolor relative">
                         <div class="userpage-image-wrapper relative">
                             <figure class="relative">
-                                <img src="/storage/user_images/{{ $user->user_image }}" alt="プロフィール画像" class="user-image">
+                                <img src="@if($user->user_image)/storage/user_images/{{ $user->user_image }}@else{{ asset('/app-images/no_picture.png') }}@endif" alt="プロフィール画像" class="user-image">
                             </figure>
                         </div>
                         <div class="profile-edit-wrapper">

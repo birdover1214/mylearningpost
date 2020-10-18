@@ -18,9 +18,9 @@
             <!-- 完成後の画像を3枚程度並べる -->
             <div class="image-content">
                 <div class="image-container">
-                    <img class="main-img" src="{{ asset('/app-images/mainphoto3.png') }}" alt="">
-                    <img class="main-img" src="{{ asset('/app-images/mainphoto2.png') }}" alt="">
-                    <img class="main-img" src="{{ asset('/app-images/mainphoto1.png') }}" alt="">
+                    <img class="main-img" src="{{ asset('/app-images/top1.png') }}" alt="">
+                    <img class="main-img" src="{{ asset('/app-images/top3.png') }}" alt="">
+                    <img class="main-img" src="{{ asset('/app-images/top2.png') }}" alt="">
                 </div>
                 <div class="image-text-container">
                     <p class="image-introduction bold">毎日の学習を投稿しよう</p>
