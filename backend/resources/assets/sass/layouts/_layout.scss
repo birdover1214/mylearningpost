@@ -137,7 +137,7 @@ header {
                     display: block;
                 }
 
-                .dropdown-mypage:hover {
+                .link-mypage:hover {
                     background-color: rgba(255, 255, 255, 0.75);
                 }
 
@@ -146,6 +146,7 @@ header {
                     background: none;
                     letter-spacing: 1px;
                     outline: 0;
+                    padding: 0 !important;
 
                     &:hover {
                         background-color: rgba(255, 255, 255, 0.75);

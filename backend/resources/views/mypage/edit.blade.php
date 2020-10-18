@@ -19,7 +19,7 @@
                 <div class="form-input">
                     <label for="user_image" class="label-image">
                         <figure>
-                            <img src="/storage/user_images/{{ $user->user_image }}" class="image-preview" alt="">
+                            <img src="@if($user->user_image)/storage/user_images/{{ $user->user_image }}@else{{ asset('/app-images/no_picture.png') }}@endif" class="image-preview" alt="">
                             <p>画像の変更</p>
                         </figure>
                         <input type="file" id="user_image" name="user_image" accept="image/png, image/jpeg">

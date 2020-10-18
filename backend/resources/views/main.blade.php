@@ -80,7 +80,7 @@
                             <li class="posts-contents-list relative">
                                 <div class="post-user-image-wrap center">
                                     <a href="@if($user->id === $post->user_id) /mypage @else /userpage/{{ $post->user_id }} @endif">
-                                        <img src="/storage/user_images/{{ $post->user->user_image }}" alt="{{ $post->user->name }}" class="post-user-image">
+                                        <img src="@if($post->user->user_image)/storage/user_images/{{ $post->user->user_image }}@else{{ asset('/app-images/no_picture.png') }}@endif" alt="{{ $post->user->name }}" class="post-user-image">
                                     </a>
                                     <p class="post-user-name">{{ $post->user->name }}</p>
                                     <div class="post-icons-wrap relative">

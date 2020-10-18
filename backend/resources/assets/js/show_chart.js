@@ -1,5 +1,3 @@
-import "Chart.js";
-
 //描画するグラフの設定
 function make_chart(labels, data)
 {
