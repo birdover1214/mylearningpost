@@ -16,4 +16,54 @@
 各スキルの総学習時間が一定時間を超えるとスキルにアイコンが付き、より学習の成果を実感できるようになります。<br>
 <br>
 <br>
-# 
+# インフラ構成図
+ローカル環境はDockerを用いて環境構築を行ったのでAWSのECSを利用してデプロイしたかったのですがECRにDockerFileをプッシュすることが出来ず今回はEC2内にgit cloneしてデプロイを行いました。
+<br><br>
+デプロイの際に使用したAWSサービスは以下画像のようになります。<br><br><br>
+![構成図](https://user-images.githubusercontent.com/71583677/96476423-21583c80-1270-11eb-8088-c0eabbb635f2.png)
+
+# 実装済みの機能一覧
+<ul>ユーザー
+  <li>認証機能</li>
+  <li>ゲストログイン機能</li>
+  <li>マイページ機能</li>
+  <li>プロフィール編集機能</li>
+</ul>
+<ul>投稿機能
+  <li>投稿一覧</li>
+  <li>投稿検索</li>
+  <li>投稿編集</li>
+  <li>投稿削除</li>
+  <li>コメント機能</li>
+  <li>いいね機能</li>
+  <li>ページネーション</li>
+</ul>
+<ul>その他機能
+  <li>グラフ描画機能</li>
+</ul>
+
+いいね機能とグラフ描画機能は非同期通信にて実装しており動的に変化します。<br>
+また、全てのフォーム入力はJSとLaravel両方でバリデーションを行っております。<br>
+
+# 使用技術一覧
+<ul>
+  <li>Sass</li>
+  <li>PHP(Laravel)</li>
+  <li>Javascript(jQuery)</li>
+  <li>HTML/CSS</li>
+</ul>
+<ul>その他ライブラリ
+  <li>Chart.js</li>
+</ul>
+<ul>開発環境
+  <li>Docker</li>
+  <li>PHP7.4</li>
+  <li>Laravel6.8</li>
+  <li>MySQL8.0</li>
+</ul>
+<ul>CI
+  <li>CircleCI(導入予定)</li>
+</ul>
+
+※Dockerに関して<br>
+DockerFileは自分が構築したい環境と同じ構成のものを検索して使用しました。<br>
