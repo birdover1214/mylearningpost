@@ -16,7 +16,7 @@ Route::get('/', 'PostController@index')->name('home');
 Auth::routes();
 
 //ゲストログイン
-Route::post('/guest', 'Auth\LoginController@guest');
+Route::post('/guest', 'Auth\LoginController@guest')->name('guest');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
@@ -26,33 +26,31 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/mypage/edit', 'UserController@edit')->name('mypage.edit');
 
-    Route::post('/mypage/update', 'UserController@update');
+    Route::post('/mypage/update', 'UserController@update')->name('mypage.update');
 
     Route::post('/mypage/delete', 'UserController@delete')->name('user.delete');
 
-    Route::post('/create', 'PostController@create');
+    Route::post('/create', 'PostController@create')->name('post.create');
     
-    Route::post('/delete/{id}', 'PostController@delete');
+    Route::post('/delete/{id}', 'PostController@delete')->name('post.delete');
 
-    Route::post('/getid', 'PostController@getid');
+    Route::post('/getid', 'PostController@getid')->name('post.getid');
 
-    Route::post('/edit', 'PostController@edit');
+    Route::post('/edit', 'PostController@edit')->name('post.edit');
 
-    Route::post('/favorite/attach', 'PostController@attach');
+    Route::post('/favorite/attach', 'PostController@attach')->name('post.attach');
 
-    Route::post('/favorite/detach', 'PostController@detach');
+    Route::post('/favorite/detach', 'PostController@detach')->name('post.detach');
 
     Route::get('/post/{id}', 'TalkController@index')->name('talk');
 
-    Route::post('/talk/create', 'TalkController@create');
+    Route::post('/talk/create', 'TalkController@create')->name('talk.create');
 
-    Route::post('/talk/delete/{id}', 'TalkController@delete');
+    Route::post('/talk/delete/{id}', 'TalkController@delete')->name('talk.delete');
 
-    Route::get('/search', 'PostController@search');
+    Route::get('/search', 'PostController@search')->name('search');
 
-    Route::post('/mypage/getdata', 'UserController@getData');
-
-    Route::post('/mypage/getdata2week', 'UserController@getData2week');
+    Route::post('/mypage/getdata', 'UserController@getData')->name('mypage.getdata');
 
     Route::get('/userpage/{id}', 'UserController@other')->name('userpage');
 });

@@ -36,5 +36,23 @@ class UserControllerTest extends TestCase
         $response->assertStatus(302)
             ->assertRedirect('login');
 
+        //承認済みの場合は指定したページへ遷移する
+        $user = factory(User::class)->create();
+
+        //マイページ遷移テスト
+        $response = $this
+            ->actingAs($user)
+            ->get(route('mypage'))
+            ->assertStatus(200)
+            ->assertSee('マイページ');
+
+        //edit遷移テスト
+        $response = $this
+            ->actingAs($user)
+            ->get(route('mypage.edit'))
+            ->assertStatus(200)
+            ->assertSee('プロフィール編集')
+            ->assertSee('登録の解除');
+
     }
 }
