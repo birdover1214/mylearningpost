@@ -74,11 +74,7 @@ class PostController extends Controller
 
         //DB内の対象レコード更新処理
         try {
-            $postData->skill_id = $request->skill;
-            $postData->time = $request->time;
-            $postData->comment = $request->comment;
-
-            $postData->save();
+            $postData->fill($request->all())->save();
         }catch(\Exception $e) {
             report($e);
         }

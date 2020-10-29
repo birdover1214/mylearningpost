@@ -119,18 +119,18 @@ class UserController extends Controller
         //更新処理
         try {
             //ユーザーデータの更新
-            $user->name = $request->name;
-            $user->introduction = $request->introduction;
-            $user->email = $request->email;
+            $user->fill([
+                'name' => $request->name,
+                'email' => $request->email,
+                'introduction' => $request->introduction,
+                'user_image' => $request->user_image,
+            ]);
             
-            //プロフィール画像が変更されていればuser_imageも更新
-            if($request->user_image) {
-                $user->user_image = $newImage;
-            }
             //新しいパスワードが入力されていた場合passwordも更新
             if($request->password) {
-                $user->password = Hash::make($request->password);
+                $user->fill(['password' => Hash::make($request->password)]);
             }
+            
             $user->save();
 
             //スキルの更新
@@ -138,6 +138,7 @@ class UserController extends Controller
         }catch(\Exception $e) {
             report($e);
             //エラー処理
+            dd($e);
             return redirect()->back()->with('flash_message', 'プロフィールの更新に失敗しました');
         }
 

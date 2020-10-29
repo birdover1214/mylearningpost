@@ -68,12 +68,10 @@ $(function() {
             })
             //成功時
             .done(function(data) {
-                console.log(data);
                 location.reload();
             })
             //失敗時
             .fail(function(data) {
-                console.log('fail')
                 $('.comment-error').addClass('is_error');
                 $('#comment').addClass('is_error');
                 $('.comment-error').text('※ コメントの送信に失敗しました');
