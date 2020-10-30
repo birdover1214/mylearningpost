@@ -8,6 +8,9 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Skill;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -71,4 +74,29 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    //登録時のスキルを一覧表示させるためshowRegistrationFormをオーバーライド
+    public function showRegistrationForm()
+    {
+        $skills = Skill::all();
+        return view('auth.register', compact('skills'));
+    }
+
+    //スキル登録とflash_messageを表示させるためregisterをオーバーライド
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+        //スキルを登録
+        if(is_array($request->skills)) {
+            $user->skills()->attach($request->skills);
+        }
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath())->with('flash_message', "ようこそ！ $user->name さん！");
+    }
+
 }

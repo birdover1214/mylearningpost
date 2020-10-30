@@ -32,8 +32,6 @@
                         <li class="nav-item">
                             <form action="{{ url('/guest') }}" method="POST" id="guest-login-form">
                                 @csrf
-                                <input type="hidden" name="email" value="guest@example.com">
-                                <input type="hidden" name="password" value="password">
                                 <button type="submit" class="nav-link">ゲストログイン</button>
                             </form>
                         </li>
