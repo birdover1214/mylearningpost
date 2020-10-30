@@ -43,12 +43,10 @@ RUN apt-get update && \
   composer config -g repos.packagist composer https://packagist.org && \
   composer global require hirak/prestissimo
 
-COPY ./php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
-COPY ./php.ini /usr/local/etc/php/php.ini
-COPY ./composer/composer.json /tmp/composer.json
-COPY ./composer/composer.lock /tmp/composer.lock
-RUN composer install --no-scripts --no-autoloader -d /tmp
-RUN mv -n ./tmp/vendor /work/backend && \
-  composer dump-autoload
+COPY ./infra/docker/php/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
+COPY ./infra/docker/php/php.ini /usr/local/etc/php/php.ini
 
 WORKDIR /work/backend
+COPY ./backend/composer.json ./
+COPY ./backend/composer.lock ./
+RUN composer install --no-scripts --no-autoloader -d ./
