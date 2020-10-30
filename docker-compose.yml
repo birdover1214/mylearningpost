@@ -4,7 +4,9 @@ volumes:
   db-store:
 services:
   app:
-    build: ./infra/docker/php
+    build:
+      context: ./
+      dockerfile: ./infra/docker/php/Dockerfile
     volumes:
       - php-fpm-socket:/var/run/php-fpm
       - ./backend:/work/backend
