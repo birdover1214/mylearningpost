@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -37,4 +39,41 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    //ゲストログイン
+    public function guest()
+    {
+        $email = 'guest@example.com';
+        $password = 'password';
+
+        if(Auth::attempt(['email' => $email, 'password' => $password])) {
+            return redirect()->route('home')->with('flash_message', 'ゲストユーザーとしてログインしました');
+        }
+
+        return redirect('/')->with('flash_message', 'ログインに失敗しました');
+    }
+
+    //flash_messageを表示させるためsendLoginResponseをオーバーライド
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        return $this->authenticated($request, $this->guard()->user())
+                ?: redirect()->intended($this->redirectPath())->with('flash_message', 'ログインしました');
+    }
+
+    //flash_messageを表示させるためlogoutをオーバーライド
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return $this->loggedOut($request) ?: redirect('/')->with('flash_message', 'ログアウトしました');
+    }
+
 }
