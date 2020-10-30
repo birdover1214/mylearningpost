@@ -45,5 +45,10 @@ RUN apt-get update && \
 
 COPY ./php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 COPY ./php.ini /usr/local/etc/php/php.ini
+COPY ./composer/composer.json /tmp/composer.json
+COPY ./composer/composer.lock /tmp/composer.lock
+RUN composer install --no-scripts --no-autoloader -d /tmp
+RUN mv -n ./tmp/vendor /work/backend && \
+  composer dump-autoload
 
 WORKDIR /work/backend
