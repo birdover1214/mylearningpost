@@ -17245,7 +17245,7 @@ footer p {
   border-top: 2px solid #3f9ae5;
 }
 
-.mypage-body {
+.userpage-body {
   display: flex;
   justify-content: space-between;
 }
@@ -17268,12 +17268,12 @@ footer p {
   color: gold;
 }
 
-.mypage-title-wrapper {
+.userpage-title-wrapper {
   width: 320px;
   margin: 0 auto;
 }
 
-.mypage-title-wrapper .mypage-title {
+.userpage-title-wrapper .userpage-title {
   font-size: 1.5rem;
 }
 

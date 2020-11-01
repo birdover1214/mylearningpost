@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Skill;
 use App\Http\Requests\PostRequest;
-use App\Models\User;
+use App\Services\FavoriteService;
 
 class PostController extends Controller
 {
@@ -41,7 +41,7 @@ class PostController extends Controller
             $post->save();
         }catch(\Exception $e) {
             report($e);
-
+            return redirect()->back()->with('flash_message', '投稿に失敗しました');
         }
 
         $posts = POST::all();
@@ -77,6 +77,7 @@ class PostController extends Controller
             $postData->fill($request->all())->save();
         }catch(\Exception $e) {
             report($e);
+            return redirect()->back()->with('flash_message', '投稿に失敗しました');
         }
 
         return response(compact('postData'));
@@ -85,12 +86,7 @@ class PostController extends Controller
     //いいね機能
     public function attach(Request $request)
     {
-        $user = Auth::user();
-        $post = Post::find($request->id);
-
-        $post->users()->attach($user->id);
-
-        $count = $post->users()->count();
+        $count = FavoriteService::favorite($request, 'attach');
 
         return response(compact('count'));
     }
@@ -98,12 +94,7 @@ class PostController extends Controller
     //いいね解除機能
     public function detach(Request $request)
     {
-        $user = Auth::user();
-        $post = Post::find($request->id);
-
-        $post->users()->detach($user->id);
-
-        $count = $post->users()->count();
+        $count = FavoriteService::favorite($request, 'detach');
 
         return response(compact('count'));
     }

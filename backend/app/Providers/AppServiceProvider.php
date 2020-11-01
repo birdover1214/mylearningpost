@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('App\Services\ChangeRankServices');
+        $this->app->bind('App\Services\SkillSortService');
+        $this->app->bind('App\Services\GetDataService');
+        $this->app->bind('App\Services\FavoriteService');
     }
 
     /**

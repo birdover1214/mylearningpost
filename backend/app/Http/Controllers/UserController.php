@@ -8,76 +8,44 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use App\Models\Skill;
-use App\Models\Post;
 use App\Http\Requests\EditUserRequest;
-use Carbon\Carbon;
+use App\Services\SkillSortService;
+use App\Services\GetDataService;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
+        $auth = Auth::user();
+        $user = User::find($auth->id);
 
-        //学習時間の多い順にスキルをソートする
-        //ユーザーの投稿からスキル名と学習時間を合計したコレクションを取得
-        $datas = Post::where('user_id', $user->id)->join('skills', 'posts.skill_id', '=', 'skills.id')->get()
-        ->groupBy(function($row) {
-            return $row->skill_name;
-        })->map(function($skill) {
-            return $skill->sum('time');
-        });
-        //昇順に並び替え
-        $data = $datas->sort();
-        //コレクションから連想配列にする
-        $array = $data->all();
-        //配列を降順にする
-        $sort = array_reverse($array);
-        //キー(スキル名)の配列と値(合計学習時間)の配列に分ける
-        $skills = array_keys($sort);
-        $times = array_values($sort);
+        //SkillSortServiceにて学習時間の多い順にソートし、スキルと時間を取得
+        list($skills, $times) = SkillSortService::sort($user);
 
-        return view('mypage/mypage', compact('user', 'skills', 'times'));
+        return view('mypage/userpage', compact('auth', 'user', 'skills', 'times'));
+    }
+
+    public function other($id)
+    {
+        $auth = Auth::user();
+        $user = User::find($id);
+
+        if($user) {
+            //SkillSortServiceにて学習時間の多い順にソートし、スキルと時間を取得
+            list($skills, $times) = SkillSortService::sort($user);
+        }else {
+            return redirect('/');
+        }
+
+        return view('mypage/userpage', compact('auth', 'user', 'skills', 'times'));
     }
 
     public function getData(Request $request)
     {
-        //$request->countがセットされていなければ0を設定
-        if($request->count == null) {
-            $request->count = 0;
-            $request->week = '1week';
-        }
-
-        //取得するデータの範囲を変数に代入する
-        $week = '';
-        if($request->week === '1week') {
-            $week = 7;
-        }else {
-            $week = 14;
-        }
-
-        //グラフ描画の為のデータを挿入する変数の初期化
-        $datas = [];
-        //データ取得開始日を計算する
-        $startDay = new Carbon('today');
-        $startDay->subDay($week * $request->count + $week);
-        //データ取得終了日を計算する
-        $endDay = new Carbon('today');
-        $endDay->subDay($week * $request->count + $week -1);
-        //$datasはkeyを日付、valueを学習時間として渡す為、日付を挿入する為の変数を作成し計算
-        $setDay = new Carbon('today');
-        $setDay->subDay($week * $request->count + $week);
-
-
-        for($i = 0; $i < $week; $i++) {
-            $times = Post::select('time')->where('user_id', $request->id)->where('created_at', '>=', $startDay->addDay(1))
-            ->where('created_at', '<', $endDay->addDay(1))->get();
-            $time = $times->sum('time');
-            $setDay->addDay(1);
-            $day = $setDay->format('m/d');
-            $datas[$day] = $time;
-        }
+        //GetDataServiceにてグラフ描画の為のデータを取得
+        $data = GetDataService::getData($request);
         
-        return response(compact('datas'));
+        return response(compact('data'));
     }
 
     public function edit()
@@ -123,7 +91,7 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'introduction' => $request->introduction,
-                'user_image' => $request->user_image,
+                'user_image' => $newImage,
             ]);
             
             //新しいパスワードが入力されていた場合passwordも更新
@@ -155,34 +123,5 @@ class UserController extends Controller
         Storage::delete('public/user_images/'.$user->user_image);
 
         return redirect(route('home'))->with('flash_message', '登録を解除しました');
-    }
-
-    public function other($id)
-    {
-        $user = User::find($id);
-
-        if($user) {
-            //学習時間の多い順にスキルをソートする
-            //ユーザーの投稿からスキル名と学習時間を合計したコレクションを取得
-            $datas = Post::where('user_id', $user->id)->join('skills', 'posts.skill_id', '=', 'skills.id')->get()
-            ->groupBy(function($row) {
-                return $row->skill_name;
-            })->map(function($skill) {
-                return $skill->sum('time');
-            });
-            //昇順に並び替え
-            $data = $datas->sort();
-            //コレクションから連想配列にする
-            $array = $data->all();
-            //配列を降順にする
-            $sort = array_reverse($array);
-            //キー(スキル名)の配列と値(合計学習時間)の配列に分ける
-            $skills = array_keys($sort);
-            $times = array_values($sort);
-        }else {
-            return redirect('/');
-        }
-
-        return view('mypage/otherpage', compact('user', 'skills', 'times'));
     }
 }

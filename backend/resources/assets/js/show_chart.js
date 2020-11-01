@@ -66,8 +66,8 @@ $(function() {
         url: '/mypage/getdata',
     })
     .done(function(response) {
-        const labels = Object.keys(response.datas);
-        const data = Object.values(response.datas);
+        const labels = Object.keys(response.data);
+        const data = Object.values(response.data);
         make_chart(labels, data);
     })
     .fail(function(response) {
@@ -172,8 +172,8 @@ $(function() {
             //現在表示しているグラフを破棄
             myChart.destroy();
             //グラフの描画処理
-            const labels = Object.keys(response.datas);
-            const data = Object.values(response.datas);
+            const labels = Object.keys(response.data);
+            const data = Object.values(response.data);
             make_chart(labels, data);
             //prevボタンを押した場合はnextボタンを押せるようにする
             //nextボタンを押した場合はsendCountの値によってnextボタンを押せないようにする

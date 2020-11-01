@@ -6,7 +6,7 @@
     border-top: 2px solid #3f9ae5;
 }
 
-.mypage-body {
+.userpage-body {
     display: flex;
     justify-content: space-between;
 }
@@ -29,11 +29,11 @@
     color: gold;
 }
 
-.mypage-title-wrapper {
+.userpage-title-wrapper {
     width: 320px;
     margin: 0 auto;
 
-    .mypage-title {
+    .userpage-title {
         font-size: 1.5rem;
     }
 }

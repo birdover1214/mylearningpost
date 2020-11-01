@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'MyLearningPost $user->nameさんのページ')
+@section('title', 'MyLearningPost ユーザーページ')
 
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
@@ -10,24 +10,38 @@
 @section('content')
 <div class="main-global-wrapper">
     <div class="main-wrapper" data-id="{{ $user->id }}">
-        <div class="mypage-title-wrapper mobile">
-            <h1 class="mypage-title bold">{{ $user->name }}さんのページ</h1>
+        <div class="userpage-title-wrapper mobile">
+            <h1 class="userpage-title bold">
+            @if($auth->id === $user->id)
+                マイページ
+            @else
+                {{ $user->name }}さんのページ
+            @endif
+            </h1>
         </div>
-        <div class="mypage-container">
-            <div class="main-body mypage-body mobile">
+        <div class="userpage-container">
+        @include('layouts.flash_message')
+            <div class="main-body userpage-body mobile">
                 <div class="userpage-userprofile-container">
                     <div class="userprofile-box border-and-bgcolor relative">
-                        <div class="userpage-image-wrapper other relative">
+                        <div class="userpage-image-wrapper relative">
                             <figure class="relative">
                                 <img src="@if($user->user_image)/storage/user_images/{{ $user->user_image }}@else{{ asset('/app-images/no_picture.png') }}@endif" alt="プロフィール画像" class="user-image">
                             </figure>
                         </div>
+                        @if($auth->id === $user->id)
+                        <div class="profile-edit-wrapper">
+                            <a href="/userpage/edit">プロフィールの編集</a>
+                        </div>
+                        @endif
                         <div class="profile-wrapper mobile top-border">
                             <div class="profile-name">
                                 <p class="user-name">{{ $user->name }}</p>
                             </div>
                             <div class="profile-introduction top-border">
-                                @if($user->introduction == "")
+                                @if($auth->id === $user->id && $user->introduction == "")
+                                    <p class="user-introduction">自己紹介文を書いてみよう！</p>
+                                @elseif($user->introduction == "")
                                     <p class="user-introduction">自己紹介文未設定</p>
                                 @else
                                     <p class="user-introduction">{{ $user->introduction }}</p>
