@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Skill extends Model
 {
-    protected $fillable = [
-        'skill_name'
+    protected $guarded = [
+        'id'
     ];
 
     //リレーション作成

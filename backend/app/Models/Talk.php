@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Talk extends Model
 {
-    protected $fillable = [
-        'post_id', 'user_id', 'comment'
+    protected $guarded = [
+        'id'
     ];
 
 

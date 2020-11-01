@@ -31,7 +31,7 @@
                         </div>
                         @if($auth->id === $user->id)
                         <div class="profile-edit-wrapper">
-                            <a href="/userpage/edit">プロフィールの編集</a>
+                            <a href="/mypage/edit">プロフィールの編集</a>
                         </div>
                         @endif
                         <div class="profile-wrapper mobile top-border">
