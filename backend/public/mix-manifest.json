@@ -1,8 +1,9 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/../resources/assets/build/css/app.css": "/../resources/assets/build/css/app.css",
+    "/js/admin/app.js": "/js/admin/app.js",
     "/js/chart.js": "/js/chart.js",
     "/js/counter.js": "/js/counter.js",
     "/js/popper.js": "/js/popper.js",
+    "/js/user/app.js": "/js/user/app.js",
+    "/../resources/assets/build/css/app.css": "/../resources/assets/build/css/app.css",
     "/css/app.css": "/css/app.css"
 }

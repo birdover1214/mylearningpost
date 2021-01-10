@@ -22,7 +22,7 @@ class CreateTalksTable extends Migration
 
             //外部キー制約
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

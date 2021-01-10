@@ -17115,6 +17115,10 @@ header {
   height: 55px;
 }
 
+.navbar .nav-list .nav-item.nav-dropdown.nav-admin {
+  width: 160px;
+}
+
 @media screen and (max-width: 767px) {
   .navbar .nav-list .nav-item.nav-dropdown {
     padding-right: 10%;
@@ -17171,6 +17175,7 @@ header {
 }
 
 footer {
+  position: relative;
   text-align: center;
   height: 50px;
   background-color: darkblue;
@@ -18084,6 +18089,14 @@ hr {
   }
 }
 
+.admin-login {
+  position: absolute;
+  right: 3%;
+  top: 30%;
+  font-size: smaller;
+  color: white;
+}
+
 .main-container {
   width: 720px;
   height: auto;
@@ -18446,6 +18459,10 @@ hr {
   font-size: 1.5rem;
 }
 
+.title-wrapper .page-title.admin-title {
+  background-color: rgba(255, 160, 160, 0.8);
+}
+
 .main-body {
   width: 720px;
   padding: 40px 20px;
@@ -18487,6 +18504,14 @@ hr {
   background-color: rgba(52, 144, 220, 0.25);
 }
 
+.link-user {
+  margin: 1rem auto 0;
+}
+
+.link-user a {
+  border-bottom: 1px solid;
+}
+
 .btn-signup {
   margin-top: 20px;
   line-height: 40px;
@@ -18521,5 +18546,201 @@ hr {
   position: relative;
   top: 2px;
   margin-right: 3px;
+}
+
+.wrapper-title {
+  text-align: left;
+  margin: 0 5rem;
+  border-bottom: 1px solid;
+}
+
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 600px;
+  margin: 3rem auto 0;
+}
+
+.boxes .box {
+  display: inline-block;
+  width: 40%;
+  height: 200px;
+  border: 1px solid #ebeced;
+  margin: 0 0 2rem;
+  text-align: center;
+  color: #3e3e3b;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.boxes .box:hover {
+  color: #4c586f;
+}
+
+.boxes .box .icon {
+  font-size: 6rem;
+  height: 9rem;
+  line-height: 9rem;
+}
+
+.boxes .box p {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.search-wrapper {
+  width: 800px;
+  margin: 2rem auto 0;
+}
+
+.search-wrapper .admin-search {
+  width: 25rem;
+  border-radius: 4px;
+}
+
+.admin__table {
+  width: 50rem;
+  margin: 2rem auto;
+}
+
+.admin__table__head {
+  background-color: #c7c7c7;
+}
+
+.admin__table__id {
+  width: 4rem;
+}
+
+.admin__table__user {
+  width: 7rem;
+}
+
+.admin__table__skill {
+  width: 6rem;
+}
+
+.admin__table__time {
+  width: 5rem;
+}
+
+.admin__table__comment {
+  width: 25rem;
+}
+
+.admin__table__button {
+  width: 3rem;
+}
+
+.admin__table__items {
+  font-size: small;
+  height: 5rem;
+}
+
+.admin__table__items:nth-child(odd) {
+  background-color: #f0f0f0;
+}
+
+.admin__table__items:nth-child(even) {
+  background-color: #fff;
+}
+
+.admin__table__items .admin-delete-btn {
+  background-color: rgba(255, 32, 32, 0.8);
+  border-radius: 4px;
+}
+
+.admin__table__items .admin-delete-btn:hover {
+  background-color: rgba(255, 32, 32, 0.5);
+}
+
+.admin__table__comment__id {
+  width: 6rem;
+}
+
+.admin__table__post {
+  width: 6rem;
+}
+
+.admin__table__comment__user {
+  width: 10rem;
+}
+
+.admin__table .user_head {
+  font-size: smaller;
+}
+
+.admin__table .user_head .admin__table__user__id {
+  width: 3rem;
+}
+
+.admin__table .user_head .admin__table__user__image {
+  width: 7rem;
+}
+
+.admin__table .user_head .admin__table__name {
+  width: 6rem;
+}
+
+.admin__table .user_head .admin__table__email {
+  width: 10rem;
+}
+
+.admin__table .user_head .admin__table__introduction {
+  width: 17rem;
+}
+
+.admin__table .user_head .admin__table__created_at {
+  width: 4rem;
+}
+
+.admin__table .user_items {
+  font-size: x-small;
+}
+
+#add-form {
+  margin: 2rem 0;
+}
+
+#add-form .invalid-feedback {
+  width: 20rem;
+  text-align: left;
+  margin: 0 auto 0.25rem;
+  padding-left: 4rem;
+}
+
+#add-form .add-text {
+  display: inline;
+  font-weight: 600;
+}
+
+#add-form .skill_name {
+  width: 15rem;
+  height: 2rem;
+  border: 2px solid #3490dc;
+  border-radius: 4px;
+  margin: 0 1rem;
+}
+
+#add-form #add-btn {
+  background-color: rgba(52, 144, 220, 0.5);
+  border: 1px solid rbga(0, 0, 0, 0.5);
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+#add-form #add-btn:hover {
+  background-color: rgba(52, 144, 220, 0.25);
+}
+
+.admin__table.skill_table {
+  width: 20rem;
+}
+
+.admin__table__skill_name {
+  width: 13rem;
+}
+
+.admin__table .skill_items {
+  height: 3rem;
 }
 

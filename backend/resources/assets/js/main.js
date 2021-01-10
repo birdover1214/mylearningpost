@@ -255,7 +255,7 @@ $(function() {
 
             //編集の場合はidを挿入
             if(postId) {
-                console.log(postId)
+                //console.log(postId)
                 sendData.append('id', postId);
             }
     
@@ -302,6 +302,7 @@ $(function() {
                     $('.error-field:has(.is_error)').css('display', 'block');
 
                 }else {
+                    console.log(response)
                     $('.select-error').addClass('is_error');
                     $('#skill').addClass('is_error');
                     $('.select-error').text('※ 投稿処理に失敗しました');

@@ -1,0 +1,34 @@
+.admin__table {
+
+    .user_head {
+        font-size: smaller;
+
+        .admin__table__user__id {
+            width: 3rem;
+        }
+
+        .admin__table__user__image {
+            width: 7rem;
+        }
+
+        .admin__table__name {
+            width: 6rem;
+        }
+
+        .admin__table__email {
+            width: 10rem;
+        }
+
+        .admin__table__introduction {
+            width: 17rem;
+        }
+
+        .admin__table__created_at {
+            width: 4rem;
+        }
+    }
+
+    .user_items {
+        font-size: x-small;
+    }
+}

@@ -101,6 +101,10 @@ header {
                 width: 120px;
                 height: 55px;
 
+                &.nav-admin {
+                    width: 160px;
+                }
+
                 @include mq('mobile') {
                     padding-right: 10%;
                 }
@@ -109,7 +113,7 @@ header {
             .btn-dropdown {
                 text-overflow: ellipsis;
                 white-space: nowrap;
-                overflow: hidden;        
+                overflow: hidden;
             }
 
             .nav-link {
@@ -158,6 +162,7 @@ header {
 }
 
 footer {
+    position: relative;
     text-align: center;
     height: 50px;
     background-color: darkblue;

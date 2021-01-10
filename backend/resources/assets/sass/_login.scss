@@ -8,6 +8,10 @@
         border-radius: 30px;
         letter-spacing: 2px;
         font-size: 1.5rem;
+
+        &.admin-title {
+            background-color: rgba(255, 160, 160, 0.8);
+        }
     }
 }
 
@@ -53,5 +57,13 @@
 
     &:hover {
         background-color: rgba(52, 144, 220, 0.25);
+    }
+}
+
+.link-user {
+    margin: 1rem auto 0;
+
+    a {
+        border-bottom: 1px solid;
     }
 }

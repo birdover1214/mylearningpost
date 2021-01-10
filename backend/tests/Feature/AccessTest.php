@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
+use App\Models\Admin;
 
 class AccessTest extends TestCase
 {
@@ -21,14 +22,18 @@ class AccessTest extends TestCase
     //未認証ユーザーのアクセス
     public function testAccess()
     {
-        $response = $this->get('/');
+        $response = $this->get(route('home'));
         $response->assertStatus(200);
 
-        $response = $this->get('/register');
+        $response = $this->get(route('user.register'));
         $response->assertStatus(200);
 
-        $response = $this->get('/login');
+        $response = $this->get(route('user.login'));
         $response->assertStatus(200);
+
+        $response = $this->get(route('admin.register'));
+
+        $response = $this->get(route('admin.login'));
 
         $response = $this->get(route('mypage'));
         $response->assertStatus(302);
@@ -79,7 +84,7 @@ class AccessTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $response = $this->actingAs($user)->get('/');
+        $response = $this->actingAs($user)->get(route('home'));
         $response->assertStatus(200);
 
         $response = $this->actingAs($user)->get(route('mypage'));
@@ -120,6 +125,35 @@ class AccessTest extends TestCase
 
         $response = $this->actingAs($user)->get(route('search'));
         $response->assertStatus(200);
+
+        $admin = factory(Admin::class)->create();
+
+        $response = $this->actingAs($admin)->get(route('home'));
+        $response->assertStatus(200);
+
+        $response = $this->actingAs($admin)->get(route('admin.home'));
+        $response->assertStatus(200);
+
+        $response = $this->actingAs($admin)->get(route('admin.edit'));
+        $response->assertStatus(200);
+
+        $response = $this->actingAs($admin)->post(route('admin.update'));
+        $response->assertStatus(302);
+
+        $response = $this->actingAs($admin)->post(route('admin.delete'));
+        $response->assertStatus(302);
+
+        $response = $this->actingAs($admin)->get(route('admin.post'));
+        $response->assertStatus(200);
+        
+        $response = $this->actingAs($admin)->get(route('admin.comment'));
+        $response->assertStatus(200);
+
+        $response = $this->actingAs($admin)->get(route('admin.user'));
+        $response->assertStatus(200);
+
+        $response = $this->actingAs($admin)->get(route('admin.skill'));
+        $response->assertStatus(302);
 
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.user.layout')
 
 @section('title', 'MyLearningPost')
 
@@ -30,8 +30,12 @@
             </div>
         </div>
         <div class="toppage-register-wrapper">
-            <a href="{{ route('register') }}" class="btn-register bold">新規登録</a>
+            <a href="{{ route('user.register') }}" class="btn-register bold">新規登録</a>
         </div>
     </div>
 </div>
+@endsection
+
+@section('admin')
+<a href="{{ route('admin.login') }}" class="admin-login">管理者ログイン</a>
 @endsection

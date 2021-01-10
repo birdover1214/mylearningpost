@@ -25,7 +25,7 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'skill' => ['required'],
+            'skill_id' => ['required'],
             'time' => ['required', new PostTime($this->id)],
             'comment' => ['required', 'max:100'],
         ];

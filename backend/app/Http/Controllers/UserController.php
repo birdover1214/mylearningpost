@@ -22,7 +22,7 @@ class UserController extends Controller
         //SkillSortServiceにて学習時間の多い順にソートし、スキルと時間を取得
         list($skills, $times) = SkillSortService::sort($user);
 
-        return view('mypage/userpage', compact('auth', 'user', 'skills', 'times'));
+        return view('user.mypage.userpage', compact('auth', 'user', 'skills', 'times'));
     }
 
     public function other($id)
@@ -37,7 +37,7 @@ class UserController extends Controller
             return redirect('/');
         }
 
-        return view('mypage/userpage', compact('auth', 'user', 'skills', 'times'));
+        return view('user.mypage.userpage', compact('auth', 'user', 'skills', 'times'));
     }
 
     public function getData(Request $request)
@@ -61,15 +61,17 @@ class UserController extends Controller
 
         $skills = Skill::all();
 
-        return view('mypage/edit', compact('user','selected_ids', 'skills'));
+        return view('user.mypage.edit', compact('user','selected_ids', 'skills'));
     }
 
     public function update(EditUserRequest $request)
     {
         $user = Auth::user();
 
+        $newImage = '';
+
         //プロフィール画像が更新されている場合は以下の画像の処理を行う
-        if($request->user_image) {
+        if(!is_null($request->user_image)) {
             //リクエストされたファイル名から拡張子を取り除く
             $fileNameWithExt = $request->user_image->getClientOriginalName();
             $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
@@ -91,8 +93,14 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'introduction' => $request->introduction,
-                'user_image' => $newImage,
             ]);
+
+            //プロフィール画像が変更されていた場合更新
+            if($newImage) {
+                $user->fill([
+                    'user_image' => $newImage,
+                ]);
+            }
             
             //新しいパスワードが入力されていた場合passwordも更新
             if($request->password) {
@@ -110,7 +118,7 @@ class UserController extends Controller
             return redirect()->back()->with('flash_message', 'プロフィールの更新に失敗しました');
         }
 
-        return redirect('/mypage')->with('flash_message', 'プロフィールを更新しました');
+        return redirect('user/mypage')->with('flash_message', 'プロフィールを更新しました');
     }
 
     public function delete()

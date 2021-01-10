@@ -1,0 +1,50 @@
+#add-form {
+    margin: 2rem 0;
+
+    .invalid-feedback {
+        width: 20rem;
+        text-align: left;
+        margin: 0 auto 0.25rem;
+        padding-left: 4rem;
+    }
+
+    .add-text {
+        display: inline;
+        font-weight: 600;
+    }
+
+    .skill_name {
+        width: 15rem;
+        height: 2rem;
+        border: 2px solid #3490dc;
+        border-radius: 4px;
+        margin: 0 1rem;
+    }
+
+    #add-btn {
+        background-color: rgba(52, 144, 220, 0.5);
+        border: 1px solid rbga(0, 0, 0, 0.5);
+        border-radius: 4px;
+        font-weight: 600;
+
+        &:hover {
+            background-color: rgba(52, 144, 220, 0.25);
+        }
+    }
+}
+
+.admin__table{
+
+    &.skill_table {
+        width: 20rem;
+    }
+
+    &__skill_name {
+        width: 13rem;
+    }
+
+    .skill_items {
+        height: 3rem;
+    }
+
+}

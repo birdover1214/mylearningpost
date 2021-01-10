@@ -15,7 +15,7 @@ class TalkController extends Controller
         $post = Post::find($id);
         $talks = Post::find($id)->talks()->paginate(10);
 
-        return view('posts.post', compact('user', 'post', 'talks'));
+        return view('user.posts.post', compact('user', 'post', 'talks'));
     }
 
     public function create(Request $request)

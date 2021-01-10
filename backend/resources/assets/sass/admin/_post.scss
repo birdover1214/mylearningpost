@@ -1,0 +1,64 @@
+.search-wrapper {
+    width: 800px;
+    margin: 2rem auto 0;
+
+    .admin-search {
+        width: 25rem;
+        border-radius: 4px;
+    }
+}
+
+.admin__table {
+    width: 50rem;
+    margin: 2rem auto;
+
+    &__head {
+        background-color: #c7c7c7;
+    }
+
+    &__id {
+        width: 4rem;
+    }
+
+    &__user {
+        width: 7rem;
+    }
+
+    &__skill {
+        width: 6rem;
+    }
+
+    &__time {
+        width: 5rem;
+    }
+
+    &__comment {
+        width: 25rem;
+    }
+
+    &__button {
+        width: 3rem;
+    }
+
+    &__items {
+        font-size: small;
+        height: 5rem;
+
+        &:nth-child(odd) {
+            background-color: #f0f0f0;
+        }
+    
+        &:nth-child(even) {
+            background-color: #fff;
+        }
+
+        .admin-delete-btn {
+            background-color: rgba(255, 32, 32, 0.8);
+            border-radius: 4px;
+
+            &:hover {
+                background-color: rgba(255, 32, 32, 0.5);
+            }
+        }
+    }
+}

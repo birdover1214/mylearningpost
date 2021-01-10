@@ -16,7 +16,10 @@ class DatabaseSeeder extends Seeder
 
         $skills = App\Models\Skill::all();
 
-        $this->call(UsersTableSeeder::class);
+        $this->call([
+            UsersTableSeeder::class,
+            AdminsTableSeeder::class,
+            ]);
 
         App\Models\User::all()->each(function ($user) use ($skills) {
             $user->skills()->attach($skills->random(rand(1,10))->pluck('id')->toArray());

@@ -34,6 +34,14 @@ class DatabaseTest extends TestCase
             1
         );
 
+        //admins
+        $this->assertTrue(
+            Schema::hasColumns('admins',[
+                'id', 'name', 'password', 'created_at', 'updated_at'
+            ]),
+            1
+        );
+
         //posts
         $this->assertTrue(
             Schema::hasColumns('posts', [

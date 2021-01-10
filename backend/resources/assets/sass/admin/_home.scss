@@ -1,0 +1,39 @@
+.wrapper-title {
+    text-align: left;
+    margin: 0 5rem;
+    border-bottom: 1px solid;
+}
+
+.boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 600px;
+    margin: 3rem auto 0;
+
+    .box {
+        display: inline-block;
+        width: 40%;
+        height: 200px;
+        border: 1px solid #ebeced;
+        margin: 0 0 2rem;
+        text-align: center;
+        color: #3e3e3b;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+        &:hover {
+            color: #4c586f;
+        }
+
+        .icon {
+            font-size: 6rem;
+            height: 9rem;
+            line-height: 9rem;
+        }
+
+        p {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+    }
+}

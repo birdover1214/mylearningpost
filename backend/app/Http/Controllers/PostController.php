@@ -20,7 +20,7 @@ class PostController extends Controller
             $posts = Post::latest('updated_at')->paginate(5);
             $skills = Skill::all();
 
-            return view('main', compact('user', 'posts', 'skills'));
+            return view('user.main', compact('user', 'posts', 'skills'));
         }
 
         return view('top');
@@ -34,7 +34,7 @@ class PostController extends Controller
         $post = new Post;
         try {
             $post->user_id = $user->id;
-            $post->skill_id = $request->skill;
+            $post->skill_id = $request->skill_id;
             $post->time = $request->time;
             $post->comment = $request->comment;
 
@@ -117,7 +117,7 @@ class PostController extends Controller
             $posts = Post::latest('updated_at')->paginate(5);
         }
 
-        return view('main', compact('user', 'posts', 'skills'));
+        return view('user.main', compact('user', 'posts', 'skills'));
     }
 
 }

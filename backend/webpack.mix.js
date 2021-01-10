@@ -31,8 +31,17 @@ mix
          'resources/assets/js/mypage/edit.js',
          'resources/assets/js/posts/post.js',
       ],
-      'public/js/app.js'
+      'public/js/user/app.js'
       )
+
+   .js(
+      [
+         'resources/assets/js/app.js',
+         'resources/assets/js/layouts/layout.js',
+         'resources/assets/js/admin/edit.js',
+      ],
+      'public/js/admin/app.js'
+   )
       
    //chart.js
    .js(
