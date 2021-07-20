@@ -24,8 +24,10 @@
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
 
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">    
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
 </head>
 <body>
     <header>
@@ -79,7 +81,7 @@
         @yield('content')
     </main>
     <footer>
-        <p>CopyLight MyLearningPost 2020-2021</p>
+        <p>&copy;&nbsp;MyLearningPost&nbsp;2020-2021</p>
         @yield('admin')
     </footer>
 </body>

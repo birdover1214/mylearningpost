@@ -1,9 +1,15 @@
 {
     "/js/admin/app.js": "/js/admin/app.js",
+    "/js/admin/app.js.map": "/js/admin/app.js.map",
     "/js/chart.js": "/js/chart.js",
+    "/js/chart.js.map": "/js/chart.js.map",
     "/js/counter.js": "/js/counter.js",
+    "/js/counter.js.map": "/js/counter.js.map",
     "/js/popper.js": "/js/popper.js",
+    "/js/popper.js.map": "/js/popper.js.map",
     "/js/user/app.js": "/js/user/app.js",
     "/../resources/assets/build/css/app.css": "/../resources/assets/build/css/app.css",
+    "/js/user/app.js.map": "/js/user/app.js.map",
+    "/../resources/assets/build/css/app.css.map": "/../resources/assets/build/css/app.css.map",
     "/css/app.css": "/css/app.css"
 }
